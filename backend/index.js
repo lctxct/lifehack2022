@@ -35,6 +35,7 @@ const main = async () => {
             instance.addHook('preHandler', authentication.authenticated) // authentication hook
 
             fastify.post('/create_volunteer_opportunity', require('./controllers/listing/create.js'));
+            fastify.post('/search_volunteer_opportunity', require('./controllers/listing/create.js'));
             fastify.get('/display_volunteer_opportunity', require('./controllers/listing/listing.js'));
             
             fastify.get("/test", async (req, res) => {
