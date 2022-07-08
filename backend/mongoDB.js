@@ -12,7 +12,8 @@ class Connection {
             const db = client.db('sussyvolunteer')
             const collections = {
                 users: db.collection('users'),
-                opportunities: db.collection('opportunities')
+                opportunities: db.collection('opportunities'),
+                experiences: db.collection('experiences')
             }
             this.db = db
             this.collections = collections

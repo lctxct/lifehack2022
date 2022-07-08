@@ -12,7 +12,6 @@ const getSigner = () => {
 
 const authenticated = async (req, res) => {
     if (req.headers.authorization == undefined) throw new Error('MissingToken');
-    let permissions = false
     let username = ""
     try {
         username = signer.unsign(req.headers.authorization);
@@ -20,7 +19,6 @@ const authenticated = async (req, res) => {
     catch (err) {
         throw new Error('BadToken');
     }
-    if (permissions === false) throw new Error('BadToken');
     req.locals = {}
     req.locals.username = username
 }

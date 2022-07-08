@@ -24,34 +24,36 @@ const main = async () => {
         authentication.createSigner()
 
         fastify.register((instance, opts, done) => {
-			fastify.post('/login', require('./controllers/auth/login.js'));
-			fastify.post('/create', require('./controllers/auth/register.js'));
-			done()
-		})
+            instance.post('/login', require('./controllers/auth/login.js'));
+            instance.post('/create', require('./controllers/auth/register.js'));
+            done()
+        })
 
         fastify.register((instance, opts, done) => {
             // register auth routes to only this context
             instance.decorateRequest('locals', null)
             instance.addHook('preHandler', authentication.authenticated) // authentication hook
 
-            fastify.post('/create_volunteer_opportunity', require('./controllers/listing/create.js'));
-            fastify.post('/search_volunteer_opportunity', require('./controllers/listing/create.js'));
-            fastify.get('/display_volunteer_opportunity', require('./controllers/listing/listing.js'));
-            
-            fastify.get("/test", async (req, res) => {
-                res.send({msg: "moshi moshi"})
-            })
+            instance.post('/create_volunteer_opportunity', require('./controllers/listing/create.js'));
+            instance.post('/search_volunteer_opportunity', require('./controllers/listing/search.js'));
+            instance.get('/display_volunteer_opportunity', require('./controllers/listing/listing.js'));
+
+            instance.get('/list_users', require('./controllers/users/list.js'));
+            instance.post('/get_user', require('./controllers/users/getUser.js'));
+            instance.post('/create_experience', require('./controllers/users/writeExperience.js'));
+            instance.post('/find_buddy', require('./controllers/users/findBuddy.js'));
+
             done()
         })
 
         try {
-			await fastify.listen({port: 20008, host: '0.0.0.0'})
-			console.log("Web server started")
-		} catch (err) {
-			console.log("Error starting web server... exiting")
-			console.error(err)
-			process.exit(1)
-		}
+            await fastify.listen({ port: 20008, host: '0.0.0.0' })
+            console.log("Web server started")
+        } catch (err) {
+            console.log("Error starting web server... exiting")
+            console.error(err)
+            process.exit(1)
+        }
     }
     else console.error("Error connecting to MongoDB")
 
