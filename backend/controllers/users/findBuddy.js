@@ -8,7 +8,7 @@ const findBuddy = async (req, res) => {
         error: "missing-params"
     })
 
-    const currentUser = await collections.users.findOne({ username: req.body.username })
+    const currentUser = await collections.users.findOne({ username: req.body.username }, {projection: {_id: 0, password: 0}})
     if (!currentUser) return res.send({ success: false, error: "user-not-found" })
 
     let recommendedBuddies = []
