@@ -11,7 +11,8 @@ class Connection {
         }).then(async (client) => {
             const db = client.db('sussyvolunteer')
             const collections = {
-                users: db.collection('users')
+                users: db.collection('users'),
+                opportunities: db.collection('opportunities')
             }
             this.db = db
             this.collections = collections

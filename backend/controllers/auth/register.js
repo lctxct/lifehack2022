@@ -4,15 +4,15 @@ const argon2 = require('argon2')
 
 const register = async (req, res) => {
     const paramsNeeded = ["username", "password", "age", "location", "categories", "timings", "telegram_id"]
-    const collections = Connection.collections
 
     for (let i = 0; i < paramsNeeded.length; i++) {
         if (!(paramsNeeded[i] in req.body)) return res.send({
             success: false,
-            error: "missing-params: " + paramsNeeded[i]
+            error: "missing-param: " + paramsNeeded[i]
         })
     }
 
+    const collections = Connection.collections
     const cleanedUsername = req.body.username.toLowerCase()
 
     await collections.users.insertOne({
