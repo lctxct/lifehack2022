@@ -2,7 +2,7 @@ import sys, json
 from sentence_transformers import SentenceTransformer, util
 
 
-model = SentenceTransformer('msmarco-distilbert-base-v4')
+model = SentenceTransformer('msmarco-MiniLM-L-6-v3')
 
 searchQuery = sys.argv[1]
 query_embedding = model.encode(searchQuery)
