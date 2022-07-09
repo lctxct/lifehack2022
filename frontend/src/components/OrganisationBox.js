@@ -14,7 +14,7 @@ const OrganisationBox = ({
   return (
     <Grid item xs={12} sm={4}>
       <Paper>
-        <img src={img} alt="organisation" style={{ maxWidth: "100%" }} />
+        <img src={img} alt="organisation" style={{ maxWidth: "100%",  }} />
         <div style={{padding: '1vw'}}>
           <Typography variant="h6">{eventName}</Typography>
           <div>{organisation}</div>
