@@ -27,8 +27,8 @@ const generate_training = async (req, res) => {
             console.log("error: " + data)
         });
         pythonProcess.stdout.on("end", (data) => {
-            console.log("end data: " + data)
-            resolve(JSON.parse(data))           
+            console.log("end data: " + finalData)
+            resolve(JSON.parse(finalData))           
         })
     });
     return res.send({
