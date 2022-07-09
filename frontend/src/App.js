@@ -3,7 +3,7 @@ import NavBar from "./components/NavBar";
 import Home from "./pages/Home";
 import Buddying from "./pages/Buddying";
 import FoundProfile from "./pages/FoundUserProfile";
-import CustomizedTimeline from "./components/pastVolunteerEvents";
+import CustomizedTimeline from "./components/PastVolunteerEvents";
 import BuddyProfile from "./components/BuddyProfile";
 import Login from "./pages/Login";
 import OrganisationPage from "./pages/organisationPage";

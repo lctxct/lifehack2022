@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
-import  EventCard from "../components/organisationEvent";
+import  EventCard from "../components/OrganisationEvent";
 import { Grid, TextField } from "@mui/material";
 import defaultImg from "../test-data/image.jpg";
 import Stack from '@mui/material/Stack';
-import OrgProfile from  '../components/organisationProfile';
+import OrgProfile from  '../components/OrganisationProfile';
 
 
 export default function OrganisationPage() {

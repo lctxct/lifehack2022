@@ -1,4 +1,4 @@
-import CustomizedTimeline from "../components/pastVolunteerEvents";
+import CustomizedTimeline from "../components/PastVolunteerEvents";
 import BuddyProfile from "../components/BuddyProfile";
 import Stack from "@mui/material/Stack";
 
