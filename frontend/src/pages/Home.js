@@ -75,9 +75,10 @@ const Home = () => {
       <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column" }}>
         <div style={{ margin: '2vw' }}>
           <Paper elevation={20} style={{ padding: "5ch", borderRadius: "30px", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
-            <div style={{ fontWeight: "bold", fontSize: "1.5vw" }}>
+            <span style={{ fontWeight: "bold", fontSize: "1.5vw" }}>
               Describe the type of volunteering opportunity you're looking for!
-            </div>
+            </span>
+            <span style={{marginTop: "0.8ch"}}>We will use our NLP model to find your the perfect volunteering opportunity!</span>
 
             <form onSubmit={onSubmit} style={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
               <TextField
