@@ -8,7 +8,7 @@ import { categories } from "../types/Organisations";
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const DEFAULT_AUTH_TOKEN = process.env.REACT_APP_DEFAULT_AUTH_TOKEN;
 
-const Buddying = () => {
+const Buddying = ({ setPage }) => {
   const [slides, setSlides] = useState([]); // key and content
   const [categoryFilter, setCategoryFilter] = useState([]);
   const [locationFilter, setLocationFilter] = useState([]);
@@ -41,14 +41,21 @@ const Buddying = () => {
       })
       .then((data) => {
         setSlides(
-          data.users.filter((user) => {
-            if (!categoryFilter.length) {
-              return true;
-            }
-            return user.categories.some(category => categoryFilter.includes(categories[category]))
-          }).map((user, index) => {
-            return { key: index, content: <UserCard {...user} /> };
-          })
+          data.users
+            .filter((user) => {
+              if (!categoryFilter.length) {
+                return true;
+              }
+              return user.categories.some((category) =>
+                categoryFilter.includes(categories[category])
+              );
+            })
+            .map((user, index) => {
+              return {
+                key: index,
+                content: <UserCard handleClick={() => setPage(2)} {...user} />,
+              };
+            })
         );
       });
   }, [categoryFilter, locationFilter]);
@@ -64,7 +71,7 @@ const Buddying = () => {
       <div style={{ width: "40%", height: "500px", margin: "1vw auto" }}>
         <Carousel
           slides={slides}
-          offsetRadius="10"
+          offsetRadius="3"
           animationConfig={config.gentle}
           showNavigation
         />
