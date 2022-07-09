@@ -33,12 +33,13 @@ const search = async (req, res) => {
         });
         pythonProcess.stdout.on("end", () => {
             console.log(finalData)
+            /*
             const corpusIDs = JSON.parse(finalData)
             let finalDocs = []
             for (let i = 0; i < corpusIDs.length; i++) {
                 // TIL: Javascript automatically converts non-string key values into strings
                 finalDocs.push(corpusMapping[corpusIDs[i].toString()])
-            }
+            }*/
             resolve(finalDocs)           
         })
     });
