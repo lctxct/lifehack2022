@@ -9,7 +9,6 @@ function App() {
   const [currentPage, setCurrentPage] = useState(0); 
 
   const setPage = page => {
-    console.log(page); 
     setCurrentPage(page); 
   }
 
