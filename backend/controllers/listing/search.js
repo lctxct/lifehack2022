@@ -19,14 +19,8 @@ const search = async (req, res) => {
     })
 
     const spawn = require("child_process").spawn;
-    let pythonProcess = null
-    try {
-        console.log(JSON.stringify(corpus))
-        pythonProcess = spawn('py', ["main.py", req.body.query, JSON.stringify(corpus)], { cwd: "__dirname" });
-    }
-    catch (e) {
-        console.error(e)
-    }
+    const pythonProcess = spawn('python3.8', ["main.py", req.body.query, JSON.stringify(corpus)], { cwd: "__dirname" });
+    
     pythonProcess.stdout.on('data', (data) => {
         console.log(data)
         const corpusIDs = JSON.parse(data)
@@ -42,6 +36,7 @@ const search = async (req, res) => {
     });
 
     pythonProcess.on("error", (err) => {
+        console.log("Error occured in python script")
         console.error(err)
     })
 
