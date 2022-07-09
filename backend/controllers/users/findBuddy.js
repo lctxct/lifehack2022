@@ -12,6 +12,7 @@ const findBuddy = async (req, res) => {
     if (!currentUser) return res.send({ success: false, error: "user-not-found" })
 
     let recommendedBuddies = []
+
     await collections.users.find({}, {projection: {_id: 0, password: 0}}).forEach(async (doc) => {
         if (doc.username !== req.body.username) {
             // if age difference < 10
