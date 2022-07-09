@@ -41,11 +41,11 @@ const Search = styled('div')(({ theme }) => ({
     justifyContent: 'center',
   }));
 
-// Please don't change the order of these pages, it needs to stay constant for some hacky routing in App.js 
+
 const pages = ['Volunteer Opportunities', 'Find a Buddy'];
 const settings = ['Profile', 'Settings', 'Logout'];
 
-const ResponsiveAppBar = ({ setPage }) => {
+const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -65,7 +65,7 @@ const ResponsiveAppBar = ({ setPage }) => {
   };
 
   return (
-    <AppBar position="static" sx={{ backgroundColor: '#98745C' }}>
+    <AppBar position="static">
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -84,7 +84,7 @@ const ResponsiveAppBar = ({ setPage }) => {
               textDecoration: 'none',
             }}
           >
-            NotSus
+            
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -98,7 +98,7 @@ const ResponsiveAppBar = ({ setPage }) => {
             >
               <MenuIcon />
             </IconButton>
-            <Menu 
+            <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
@@ -116,8 +116,8 @@ const ResponsiveAppBar = ({ setPage }) => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page, index) => (
-                <MenuItem key={page} onClick={() => setPage(index)}>
+              {pages.map((page) => (
+                <MenuItem key={page} onClick={handleCloseNavMenu}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
@@ -143,11 +143,11 @@ const ResponsiveAppBar = ({ setPage }) => {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page, index) => (
+            {pages.map((page) => (
               <Button
                 key={page}
-                onClick={()=>setPage(index)}
-                sx={{ my: 2, color: 'white', display: 'block', marginRight: '1rem'}}
+                onClick={handleCloseNavMenu}
+                sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 {page}
               </Button>

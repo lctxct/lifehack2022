@@ -10,7 +10,6 @@ export default function FoundProfile() {
   return (
     <Stack
   direction="row"
-  justifyContent="left"
   alignItems="stretch"
   spacing={0}
 >
