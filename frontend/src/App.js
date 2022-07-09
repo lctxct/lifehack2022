@@ -8,12 +8,14 @@ import BuddyProfile from './components/BuddyProfile';
 import Login from './pages/Login'
 import OrganisationPage from './pages/organisationPage';
 import { CircularProgress, Fade } from '@mui/material';
+import { useSnackbar } from 'notistack';
 
 import NotFound from './pages/NotFound';
 import { useState, useEffect, Fragment } from 'react';
 
 function App() {
   const [currentPage, setCurrentPage] = useState(0);
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   const [token, setToken] = useState(false)
   const [loading, setLoading] = useState(true)
   const [username, setUsername] = useState("John Doe")
@@ -23,9 +25,15 @@ function App() {
     if (localStorageToken !== null) {
       window.token = localStorageToken
       setToken(localStorageToken)
+      const username = localStorageToken.split(".")[0]
+      setUsername(username)
+      enqueueSnackbar("Welcome back " + username + "!", {
+        variant: 'success',
+        autoHideDuration: 2500
+    })
     }
     setLoading(false)
-  })
+  }, [])
 
   const handleNewLogin = (token, rememberMe) => {
     if (rememberMe) {
