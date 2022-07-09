@@ -13,7 +13,8 @@ class Connection {
             const collections = {
                 users: db.collection('users'),
                 opportunities: db.collection('opportunities'),
-                experiences: db.collection('experiences')
+                experiences: db.collection('experiences'),
+                organisations: db.collection('organisations')
             }
             this.db = db
             this.collections = collections

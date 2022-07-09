@@ -1,8 +1,7 @@
 const Connection = require('./../../mongoDB.js')
 
-const writeExperience = async (req, res) => {
-    const paramsNeeded = ["organisation", "description", "rating"]
-
+const create = async (req, res) => {
+    const paramsNeeded = ["organisation", "category", "description"]
     for (let i = 0; i < paramsNeeded.length; i++) {
         if (!(paramsNeeded[i] in req.body)) return res.send({
             success: false,
@@ -11,14 +10,13 @@ const writeExperience = async (req, res) => {
     }
 
     const collections = Connection.collections
-    await collections.experiences.insertOne({
-        username: req.locals.username,
+    await collections.organisations.insertOne({
         organisation: req.body.organisation.toLowerCase(),
-        description: req.body.description,
-        rating: req.body.rating
+        category: req.body.category.toLowerCase(),
+        description: req.body.description
     })
 
     res.send({ success: true })
 }
 
-module.exports = writeExperience
+module.exports = create
