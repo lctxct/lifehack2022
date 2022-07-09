@@ -22,8 +22,8 @@ const search = async (req, res) => {
     const pythonProcess = spawn('python3.8', ["main.py", req.body.query, JSON.stringify(corpus)], { cwd: __dirname });
     
     pythonProcess.stdout.on('data', (data) => {
-        console.log(data)
-        const corpusIDs = JSON.parse(data)
+        const corpusIDs = JSON.parse(data.toString())
+        console.log(corpusIDs)
         let finalDocs = []
         for (let i = 0; i < corpusIDs.length; i++) {
             finalDocs.push(corpusMapping[corpusIDs[i]])
