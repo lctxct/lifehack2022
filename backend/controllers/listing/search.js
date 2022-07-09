@@ -11,7 +11,7 @@ const search = async (req, res) => {
     const collections = Connection.collections
     const corpus = []
     const corpusMapping = {}
-    let counter = 1
+    let counter = 0
     await collections.opportunities.find({}).forEach((doc) => {
         corpus.push(doc.event_name + ". " + doc.description)
         corpusMapping[counter] = doc
@@ -19,25 +19,31 @@ const search = async (req, res) => {
     })
 
     const spawn = require("child_process").spawn;
-    const pythonProcess = spawn('python3.8', ["main.py", req.body.query, JSON.stringify(corpus)], { cwd: __dirname });
-    
-    pythonProcess.stdout.on('data', (data) => {
-        const corpusIDs = JSON.parse(data.toString())
-        console.log(corpusIDs)
-        let finalDocs = []
-        for (let i = 0; i < corpusIDs.length; i++) {
-            finalDocs.push(corpusMapping[corpusIDs[i]])
-        }
-        return res.send({
-            success: true,
-            filteredOpportunities: finalDocs
-        })
-
-    });
+    const pythonProcess = spawn('py', ["main.py", req.body.query, JSON.stringify(corpus)], { cwd: __dirname });
 
     pythonProcess.on("error", (err) => {
         console.log("Error occured in python script")
         console.error(err)
+    })
+
+    const filteredOpportunities = await new Promise((resolve, reject) => {
+        let finalData = ""
+        pythonProcess.stdout.on('data', (data) => {
+            finalData += data.toString()
+        });
+        pythonProcess.stdout.on("end", () => {
+            const corpusIDs = JSON.parse(finalData)
+            let finalDocs = []
+            for (let i = 0; i < corpusIDs.length; i++) {
+                // TIL: Javascript automatically converts non-string key values into strings
+                finalDocs.push(corpusMapping[corpusIDs[i].toString()])
+            }
+            resolve(finalDocs)           
+        })
+    });
+    return res.send({
+        success: true,
+        filteredOpportunities: filteredOpportunities
     })
 
 }
