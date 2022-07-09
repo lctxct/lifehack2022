@@ -1,0 +1,16 @@
+export const categories = [
+  "Animal Welfare",
+  "Arts & Heritage",
+  "Children & Youth",
+  "Community",
+  "Disability",
+  "Education",
+  "Elderly",
+  "Environment",
+  "Families",
+  "Health",
+  "Humanitarian",
+  "Social Service",
+  "Sports",
+  "Women & Girls",
+];
