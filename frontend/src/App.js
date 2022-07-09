@@ -1,15 +1,15 @@
 import './App.css';
 import NavBar from './components/NavBar';
-import Home from './pages/Home'; 
-import Buddying from './pages/Buddying'; 
+import Home from './pages/Home';
+import Buddying from './pages/Buddying';
 import FoundProfile from './pages/FoundUserProfile';
-import CustomizedTimeline from  './components/PastVolunteerEvents';
-import BuddyProfile from  './components/BuddyProfile';
+import CustomizedTimeline from './components/pastVolunteerEvents';
+import BuddyProfile from './components/BuddyProfile';
 import Login from './pages/Login'
-import OrganisationPage from './pages/OrganisationPage';
+import OrganisationPage from './pages/organisationPage';
 
-import NotFound from './pages/NotFound'; 
-import { useState, useEffect } from 'react'; 
+import NotFound from './pages/NotFound';
+import { useState, useEffect, Fragment } from 'react';
 
 function App() {
   const [currentPage, setCurrentPage] = useState(0);
@@ -38,18 +38,24 @@ function App() {
   }
 
   return (
-    
-    <div className="App">
-      <NavBar setPage={setPage}/> 
-      
-      {/* {currentPage === 0 && <Home />} */}
-      {currentPage == 0 && <OrganisationPage/>}
-      {currentPage === 1 && <Buddying />}
-      {currentPage === 2 && <NotFound />}
-      {currentPage > 2 && <NotFound />}
-    
-    </div>
+    <Fragment>
+      {token ? (
+        <Fragment>
+          <NavBar setPage={setPage} />
+
+          {/* {currentPage === 0 && <Home />} */}
+          {currentPage == 0 && <OrganisationPage />}
+          {currentPage === 1 && <Buddying />}
+          {currentPage === 2 && <NotFound />}
+          {currentPage > 2 && <NotFound />}
+        </Fragment>
+      ) :
+        (
+          <Login handleNewLogin={handleNewLogin} />
+        )}
+    </Fragment>
   );
+
 }
 
 export default App;

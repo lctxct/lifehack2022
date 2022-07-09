@@ -1,5 +1,5 @@
 import react from 'react'; 
-import CustomizedTimeline from  '../components/PastVolunteerEvents';
+import CustomizedTimeline from  '../components/pastVolunteerEvents';
 import BuddyProfile from  '../components/BuddyProfile';
 import Stack from '@mui/material/Stack';
 
