@@ -1,12 +1,9 @@
 import { categories } from "../types/Organisations";
+import MultiSelect from "../components/MultiSelect";
+import { Typography } from "@mui/material";
 import { useState } from "react";
-import {
-  TextField,
-} from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
-import MultiSelect from "./MultiSelect";
 
-const BuddyingFilterBar = () => {
+const NewVolunteerOpportunity = () => {
   const [categoryFilter, setCategoryFilter] = useState([]);
   const [locationFilter, setLocationFilter] = useState([]);
 
@@ -30,15 +27,7 @@ const BuddyingFilterBar = () => {
 
   return (
     <div>
-      <div>
-        <TextField
-          sx={{ m: 1, width: 500, maxWidth: "80vw" }}
-          id="outlined-search"
-          label="Search for organisation..."
-          type="search"
-        />
-      </div>
-
+      <Typography variant="h1">Create New Volunteering Opportunity</Typography>
       <MultiSelect
         label="Categories"
         items={categories}
@@ -56,4 +45,4 @@ const BuddyingFilterBar = () => {
   );
 };
 
-export default BuddyingFilterBar;
+export default NewVolunteerOpportunity;

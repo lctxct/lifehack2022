@@ -79,9 +79,28 @@ training_program: []
 } ] }
 ```
 
-### `POST /search_volunteer_opportunity`   (TBC)
+### `POST /search_volunteer_opportunity`
 
 Returns a list of opportunities similiar to the one above but filtered  
+### Request:
+
+```json
+  "query": "I love nature!"
+```
+### Return:
+```json
+  { success: true, 
+filteredOpportunities: 
+[ { 
+organisation: '', 
+category: '', 
+event_name: '', 
+timing: '', 
+location: '', 
+description: 'hello world!', 
+training_program: []
+} ] }
+```
 
 ### `POST /create_volunteer_opportunity`
 
@@ -101,15 +120,24 @@ training_program (note, request the automatic training program generation endpoi
 
 
 
-### `POST /generate_training_program`  (TBC)
+### `POST /generate_training`
 
 ### Request:
-
-description  
-
-Response:  
-training_program  
-
+```
+description
+event_name
+```
+### Response:
+```
+{
+  "success": true,
+  "generatedTrainings": [
+    "oral skills practice",
+    "conversational language training",
+    "body language cues reading"
+  ]
+}
+```
 
 
 ## Buddying/Users
