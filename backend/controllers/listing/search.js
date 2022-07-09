@@ -19,7 +19,7 @@ const search = async (req, res) => {
     })
 
     const spawn = require("child_process").spawn;
-    const pythonProcess = spawn('python3.8', ["main.py", req.body.query, JSON.stringify(corpus)], { cwd: "__dirname" });
+    const pythonProcess = spawn('python3.8', ["main.py", req.body.query, JSON.stringify(corpus)], { cwd: __dirname });
     
     pythonProcess.stdout.on('data', (data) => {
         console.log(data)
