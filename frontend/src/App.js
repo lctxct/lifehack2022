@@ -42,10 +42,9 @@ function App() {
         <Fragment>
           <NavBar setPage={setPage} />
 
-          {/* {currentPage === 0 && <Home />} */}
-          {currentPage == 0 && <OrganisationPage />}
+          {currentPage === 0 && <Home />}
           {currentPage === 1 && <Buddying />}
-          {currentPage === 2 && <NotFound />}
+          {currentPage == 2 && <OrganisationPage />}
           {currentPage > 2 && <NotFound />}
         </Fragment>
       ) :
