@@ -66,13 +66,13 @@ const Home = () => {
       <TextField
         placeholder="Start typing..."
         multiline
-        rows={10}
+        rows={5}
         fullWidth
         style={{ width: "40vw", margin: '2vw' }}
         onChange={handleChange}
       />
       <div>
-      <Button variant="outlined" type="submit">Get Recommendations</Button>
+      <Button variant="outlined" type="submit" sx={{fontFamily: 'inherit'}}>Get Recommendations</Button>
       </div>
       
       </form>
@@ -85,6 +85,7 @@ const Home = () => {
             img={defaultImg}
             eventName={data.event_name}
             {...data}
+            sx={{fontFamily: 'inherit'}}
           />
         ))}
       </Grid>}

@@ -65,7 +65,7 @@ const ResponsiveAppBar = ({ setPage }) => {
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static" sx={{ backgroundColor: '#98745C' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
@@ -98,7 +98,7 @@ const ResponsiveAppBar = ({ setPage }) => {
             >
               <MenuIcon />
             </IconButton>
-            <Menu
+            <Menu 
               id="menu-appbar"
               anchorEl={anchorElNav}
               anchorOrigin={{
@@ -147,7 +147,7 @@ const ResponsiveAppBar = ({ setPage }) => {
               <Button
                 key={page}
                 onClick={()=>setPage(index)}
-                sx={{ my: 2, color: 'white', display: 'block' }}
+                sx={{ my: 2, color: 'white', display: 'block', marginRight: '1rem'}}
               >
                 {page}
               </Button>
