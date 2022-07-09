@@ -19,7 +19,7 @@ const search = async (req, res) => {
     })
 
     const spawn = require("child_process").spawn;
-    const pythonProcess = spawn('python3.8', ["main.py", req.body.query, JSON.stringify(corpus)], { cwd: __dirname });
+    const pythonProcess = spawn('python3.8', ["main.py", req.body.query, JSON.stringify(corpus)], { cwd: __dirname, stdio: "pipe" });
 
     pythonProcess.on("error", (err) => {
         console.log("Error occured in python script")
@@ -33,14 +33,13 @@ const search = async (req, res) => {
         });
         pythonProcess.stdout.on("end", () => {
             console.log(finalData)
-            /*
             const corpusIDs = JSON.parse(finalData)
             let finalDocs = []
             for (let i = 0; i < corpusIDs.length; i++) {
                 // TIL: Javascript automatically converts non-string key values into strings
                 finalDocs.push(corpusMapping[corpusIDs[i].toString()])
-            }*/
-            resolve()           
+            }
+            resolve(finalDocs)           
         })
     });
     return res.send({
