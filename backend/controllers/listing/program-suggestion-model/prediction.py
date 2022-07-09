@@ -3,7 +3,7 @@ import pandas as pd
 from gensim.utils import simple_preprocess
 from gensim.parsing.preprocessing import strip_tags
 from gensim.models.doc2vec import TaggedDocument
-import json, random
+import json, random, sys
 
 class ProgramSuggestion:
     def __init__(self):
@@ -46,6 +46,6 @@ class ProgramSuggestion:
         p = p1 + p2
         return p
 
-# obj = ProgramSuggestion()
-# pred = obj.get_suggestions(title="FOOD DISTRIBUTIONS", description='PLS IGNORE THE EVENT DATES AND TIMINGS AS THIS PAGE IS USED FOR RECRUITMENT OF VOLUNTEERS. We hold monthly food distributions for ad hoc volunteers to attend. You will be collecting, packing and distributing the food on the same day. All within less then 3 hours. Members would get to choose what we could do for the community and have fun together amongst Volunteers People from all locations are welcome, It is all about your will to help')
-# print(pred)
+obj = ProgramSuggestion()
+pred = obj.get_suggestions(title=sys.argv[1], description=sys.argv[2])
+print(json.dumps(pred))
