@@ -10,21 +10,24 @@ const create = async (req, res) => {
         })
     }
 
+    const collections = Connection.collections
+    
     // Check if organisation exists, otherwise, create one.
     const cleanedOrgName = req.body.organisation.toLowerCase()
+    const cleanedCatName = req.body.category.toLowerCase()
     const org = await collections.organisations.findOne({organisation: cleanedOrgName})
     if (!org) {
-        await collections.organisations.insertOne({organisation: cleanedOrgName, category: req.body.category, description: cleanedOrgName + " is an organisation dealing with " + req.body.category})
+        await collections.organisations.insertOne({organisation: cleanedOrgName, category: cleanedCatName, description: cleanedOrgName + " is an organisation dealing with " + req.body.category})
     }
 
-    const collections = Connection.collections
+    
     await collections.opportunities.insertOne({
         organisation: cleanedOrgName,
         event_name: req.body.event_name,
-        category: req.body.category,
+        category: cleanedCatName,
         description: req.body.description,
         timing: req.body.timing,
-        location_name: req.body.location,
+        location_name: req.body.location.toLowerCase(),
         training_program: req.body.training_program
     })
 

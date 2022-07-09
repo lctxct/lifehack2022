@@ -13,7 +13,7 @@ const writeExperience = async (req, res) => {
     const collections = Connection.collections
     await collections.experiences.insertOne({
         username: req.locals.username,
-        organisation: req.body.organisation,
+        organisation: req.body.organisation.toLowerCase(),
         description: req.body.description,
         rating: req.body.rating
     })

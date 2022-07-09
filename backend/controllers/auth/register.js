@@ -25,7 +25,7 @@ const register = async (req, res) => {
         username: cleanedUsername,
         password: await argon2.hash(req.body.password),
         age: req.body.age,
-        location: req.body.location,
+        location: req.body.location.toLowerCase(),
         categories: cleanedCategories,
         timings: req.body.timings,
         telegram_id: req.body.telegram_id

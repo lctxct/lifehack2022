@@ -43,6 +43,10 @@ const main = async () => {
             instance.post('/create_experience', require('./controllers/users/writeExperience.js'));
             instance.post('/find_buddy', require('./controllers/users/findBuddy.js'));
 
+            instance.get('/list_organisations', require('./controllers/organisation/list.js'));
+            instance.post('/create_organisation', require('./controllers/organisation/create.js'));
+            instance.post('/query_organisation', require('./controllers/organisation/query.js'));
+
             done()
         })
 

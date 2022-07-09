@@ -11,8 +11,8 @@ const create = async (req, res) => {
 
     const collections = Connection.collections
     await collections.organisations.insertOne({
-        organisation: req.body.organisation,
-        category: req.body.category,
+        organisation: req.body.organisation.toLowerCase(),
+        category: req.body.category.toLowerCase(),
         description: req.body.description
     })
 
