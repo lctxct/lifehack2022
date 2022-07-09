@@ -15,12 +15,17 @@ const register = async (req, res) => {
     const collections = Connection.collections
     const cleanedUsername = req.body.username.toLowerCase()
 
+    if (!Array.isArray(req.body.categories)) return res.send({
+        success: false,
+        error: "format"
+    })
+
     await collections.users.insertOne({
         username: cleanedUsername,
         password: await argon2.hash(req.body.password),
         age: req.body.age,
         location: req.body.location.toLowerCase(),
-        categories: cleanedCategories,
+        categories: req.body.categories,
         timings: req.body.timings,
         telegram_id: req.body.telegram_id,
         bio: req.body.bio
