@@ -5,24 +5,32 @@ import Buddying from "./pages/Buddying";
 import FoundProfile from "./pages/FoundUserProfile";
 import Login from "./pages/Login";
 import { CircularProgress, Fade } from "@mui/material";
+import { useSnackbar } from 'notistack';
 
 import NotFound from "./pages/NotFound";
 import { useState, useEffect, Fragment } from "react";
 
 function App() {
   const [currentPage, setCurrentPage] = useState(0);
-  const [token, setToken] = useState(false);
-  const [loading, setLoading] = useState(true);
-  const [username, setUsername] = useState("John Doe");
+  const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+  const [token, setToken] = useState(false)
+  const [loading, setLoading] = useState(true)
+  const [username, setUsername] = useState("John Doe")
 
   useEffect(() => {
     const localStorageToken = localStorage.getItem("auth-token");
     if (localStorageToken !== null) {
-      window.token = localStorageToken;
-      setToken(localStorageToken);
+      window.token = localStorageToken
+      setToken(localStorageToken)
+      const username = localStorageToken.split(".")[0]
+      setUsername(username)
+      enqueueSnackbar("Welcome back " + username + "!", {
+        variant: 'success',
+        autoHideDuration: 2500
+    })
     }
-    setLoading(false);
-  });
+    setLoading(false)
+  }, [])
 
   const handleNewLogin = (token, rememberMe) => {
     if (rememberMe) {
