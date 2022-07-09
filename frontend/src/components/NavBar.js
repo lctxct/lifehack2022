@@ -147,7 +147,7 @@ const ResponsiveAppBar = ({ setPage }) => {
               <Button
                 key={page}
                 onClick={()=>setPage(index)}
-                sx={{ my: 2, color: 'white', display: 'block', marginRight: '1rem'}}
+                sx={{ my: 2, color: 'white', display: 'block', fontFamily: 'sans-serif', marginRight: '1rem'}}
               >
                 {page}
               </Button>

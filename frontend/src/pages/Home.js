@@ -1,10 +1,18 @@
 import { useEffect, useState } from "react";
 import OrganisationBox from "../components/OrganisationBox";
-import { Button, CircularProgress, Grid, TextField } from "@mui/material";
+import { Button, CircularProgress, createTheme, Grid, TextField, ThemeProvider } from "@mui/material";
 import defaultImg from "../test-data/image.jpg";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const DEFAULT_AUTH_TOKEN = process.env.REACT_APP_DEFAULT_AUTH_TOKEN
+
+const customTheme = createTheme({
+  palette: {
+    neutral: {
+      main: '#060606'
+    },
+  },
+});
 
 
 const Home = () => {
@@ -57,7 +65,8 @@ const Home = () => {
   }, []);
 
   return (
-    <>
+    <ThemeProvider theme={customTheme}>
+    <>      
       <div style={{margin: '2vw'}}>
       <div style={{ fontWeight: "bold", fontSize: "1.5vw" }}>
         Describe the type of volunteering opportunity you're looking for!
@@ -72,7 +81,7 @@ const Home = () => {
         onChange={handleChange}
       />
       <div>
-      <Button variant="outlined" type="submit" sx={{fontFamily: 'inherit'}}>Get Recommendations</Button>
+      <Button color="neutral" variant="outlined" type="submit" sx={{fontFamily: 'inherit'}}>Get Recommendations</Button>
       </div>
       
       </form>
@@ -90,6 +99,7 @@ const Home = () => {
         ))}
       </Grid>}
     </>
+    </ThemeProvider>
   );
 };
 
