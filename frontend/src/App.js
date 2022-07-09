@@ -1,10 +1,15 @@
 import './App.css';
+import NavBar from './components/NavBar';
 import Home from './pages/Home'; 
+import Buddying from './pages/Buddying'; 
 
 function App() {
   return (
     <div className="App">
-      <Home />
+      <NavBar /> 
+
+      {/* <Home /> */}
+      <Buddying /> 
     </div>
   );
 }

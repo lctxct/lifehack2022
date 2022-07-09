@@ -1,11 +1,25 @@
-import { useEffect, useState} from 'react'; 
-import OrganisationBox from '../components/OrganisationBox'; 
-import { Grid, TextField} from '@mui/material';
-import defaultImg from '../test-data/image.jpg';
-import ResponsiveAppBar from '../components/NavBar';
+import { useEffect, useState } from "react";
+import OrganisationBox from "../components/OrganisationBox";
+import { Grid, TextField } from "@mui/material";
+import defaultImg from "../test-data/image.jpg";
+import ResponsiveAppBar from "../components/NavBar";
 
-
-
+const SearchBar = () => {
+  return (
+    <div style={{margin: '2vw'}}>
+      <div style={{ fontWeight: "bold", fontSize: "1.5vw" }}>
+        Describe the type of volunteering opportunity you're looking for!
+      </div>
+      <TextField
+        placeholder="Start typing..."
+        multiline
+        rows={10}
+        fullWidth
+        style={{ width: "40vw", margin: '2vw' }}
+      />
+    </div>
+  );
+};
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const DEFAULT_AUTH_TOKEN = process.env.REACT_APP_DEFAULT_AUTH_TOKEN;
@@ -34,12 +48,8 @@ const Home = () => {
 
   return (
     <>
-     <ResponsiveAppBar /> 
-      <div style={{fontWeight: 'bold'}}>
-        Describe the type of volunteering opportunity you're looking for!
-      </div>
-        <TextField placeholder="Start typing..." multiline rows={10} fullWidth style={{width: '40vw'}}/>
-
+      <ResponsiveAppBar />
+      <SearchBar /> 
       <Grid container spacing={3} style={{ padding: "2vw" }}>
         {organisationData.map((data) => (
           <OrganisationBox
