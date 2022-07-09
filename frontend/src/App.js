@@ -2,6 +2,11 @@ import './App.css';
 import NavBar from './components/NavBar';
 import Home from './pages/Home'; 
 import Buddying from './pages/Buddying'; 
+import FoundProfile from './pages/FoundUserProfile';
+import CustomizedTimeline from  './components/pastVolunteerEvents';
+import BuddyProfile from  './components/BuddyProfile';
+import OrganisationPage from './pages/organisationPage';
+
 import NotFound from './pages/NotFound'; 
 import { useState } from 'react'; 
 
@@ -14,6 +19,7 @@ function App() {
   }
 
   return (
+    
     <div className="App">
       <NavBar setPage={setPage}/> 
       {currentPage === 0 && <Home />}
