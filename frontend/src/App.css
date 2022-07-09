@@ -37,3 +37,32 @@
     transform: rotate(360deg);
   }
 }
+
+.login-page::before {
+  content: "";
+  background-image: url("./homePage.webp");
+  background-size: cover;
+  display: block;
+  width: 100%;
+  height: 105%;
+  z-index: -1;
+  position: fixed;
+  -webkit-filter: blur(2px);
+  -moz-filter: blur(2px);
+  -o-filter: blur(2px);
+  -ms-filter: blur(2px);
+  filter: blur(2px);
+
+}
+
+.input-style {
+  padding-bottom: 2ch !important;
+}
+
+.fadeIn {
+    animation-duration: .38s;
+    animation-timing-function: ease-out;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-name: fade-in-animation;
+}
