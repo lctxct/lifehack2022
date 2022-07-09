@@ -79,9 +79,28 @@ training_program: []
 } ] }
 ```
 
-### `POST /search_volunteer_opportunity`   (TBC)
+### `POST /search_volunteer_opportunity`
 
 Returns a list of opportunities similiar to the one above but filtered  
+### Request:
+
+```json
+  "query": "I love nature!"
+```
+### Return:
+```json
+  { success: true, 
+filteredOpportunities: 
+[ { 
+organisation: '', 
+category: '', 
+event_name: '', 
+timing: '', 
+location: '', 
+description: 'hello world!', 
+training_program: []
+} ] }
+```
 
 ### `POST /create_volunteer_opportunity`
 
