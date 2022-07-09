@@ -40,7 +40,7 @@ const search = async (req, res) => {
                 // TIL: Javascript automatically converts non-string key values into strings
                 finalDocs.push(corpusMapping[corpusIDs[i].toString()])
             }*/
-            resolve(finalDocs)           
+            resolve()           
         })
     });
     return res.send({
