@@ -37,7 +37,7 @@ print(corpus.head())
 # model training
 Lbl2Vec_model = Lbl2Vec(keywords_list=list(labels.keywords), tagged_documents=corpus['tagged_docs'][corpus['data_set_type'] == 'train'], min_count = 2, similarity_threshold=0.90, min_num_docs = 50, epochs=30)
 Lbl2Vec_model.fit()
-Lbl2Vec_model.save('model')
+Lbl2Vec_model.save('../data/model')
 
 # predict similarity scores of new test documents
 new_docs_lbl_similarities = Lbl2Vec_model.predict_new_docs(tagged_docs=corpus['tagged_docs'][corpus['data_set_type']=='test'])
