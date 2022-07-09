@@ -53,7 +53,7 @@ const main = async () => {
             instance.addHook('preHandler', authentication.authenticated) // authentication hook
 
             instance.post('/create_volunteer_opportunity', require('./controllers/listing/create.js'));
-            instance.post('/generate_training', require('./controllers/listing/generate_training.js'));
+            instance.post('/generate_training', require('./controllers/listing/program-suggestion-model/generate_training.js'));
             instance.post('/search_volunteer_opportunity', require('./controllers/listing/search.js'));
             instance.get('/display_volunteer_opportunity', require('./controllers/listing/listing.js'));
 

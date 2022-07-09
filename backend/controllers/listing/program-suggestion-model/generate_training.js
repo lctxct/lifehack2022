@@ -1,4 +1,4 @@
-const Connection = require('./../../mongoDB.js')
+const Connection = require('../../../mongoDB.js')
 
 const generate_training = async (req, res) => {
     
@@ -10,7 +10,7 @@ const generate_training = async (req, res) => {
     }
 
     const spawn = require("child_process").spawn;
-    const pythonProcess = spawn('python3.8', ["program-suggestion-model/prediction.py", req.body.event_name, req.body.description], { cwd: __dirname });
+    const pythonProcess = spawn('python3.8', ["prediction.py", req.body.event_name, req.body.description], { cwd: __dirname });
     
     pythonProcess.on("error", (err) => {
         console.log("Error occured in python script")
