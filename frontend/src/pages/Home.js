@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import OrganisationBox from "../components/OrganisationBox";
 import { Grid, TextField } from "@mui/material";
 import defaultImg from "../test-data/image.jpg";
-import ResponsiveAppBar from "../components/NavBar";
 
 const SearchBar = () => {
   return (
@@ -48,7 +47,6 @@ const Home = () => {
 
   return (
     <>
-      <ResponsiveAppBar />
       <SearchBar /> 
       <Grid container spacing={3} style={{ padding: "2vw" }}>
         {organisationData.map((data) => (

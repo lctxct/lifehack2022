@@ -41,11 +41,11 @@ const Search = styled('div')(({ theme }) => ({
     justifyContent: 'center',
   }));
 
-
+// Please don't change the order of these pages, it needs to stay constant for some hacky routing in App.js 
 const pages = ['Volunteer Opportunities', 'Find a Buddy'];
 const settings = ['Profile', 'Settings', 'Logout'];
 
-const ResponsiveAppBar = () => {
+const ResponsiveAppBar = ({ setPage }) => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -116,8 +116,8 @@ const ResponsiveAppBar = () => {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+              {pages.map((page, index) => (
+                <MenuItem key={page} onClick={() => setPage(index)}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
@@ -143,10 +143,10 @@ const ResponsiveAppBar = () => {
             LOGO
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
+            {pages.map((page, index) => (
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
+                onClick={()=>setPage(index)}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 {page}
