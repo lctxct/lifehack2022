@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import OrganisationBox from "../components/OrganisationBox";
+import OrganisationCard from "../components/OrganisationCard";
+import OrganisationModal from "../components/OrganisationModal";
 import DeleteIcon from '@mui/icons-material/Delete';
 import SearchIcon from '@mui/icons-material/Search';
 
@@ -15,10 +16,15 @@ const Home = () => {
   const [query, setQuery] = useState('');
   const [currentlyFiltered, setCurrentlyFiltered] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
+  const [ modal, setModal ] = useState(false); 
 
   const handleChange = (event) => {
     setQuery(event.target.value);
   };
+
+  const handleClick = () =>  {
+    setModal(!modal); 
+  }
 
   const onSubmit = (event) => {
     event.preventDefault();
@@ -105,15 +111,17 @@ const Home = () => {
         {!isLoading && <Grid container spacing={3} style={{ padding: "2vw" }}>
 
           {organisationData.map((data) => (
-            <OrganisationBox
+            <OrganisationCard
               img={defaultImg}
               eventName={data.event_name}
               {...data}
               sx={{ fontFamily: 'inherit' }}
+              handleClick={() => handleClick(true)}
             />
           ))}
         </Grid>}
       </div>
+      <OrganisationModal open={modal} handleClose={handleClick} />
     </div >
   );
 };
