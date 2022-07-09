@@ -33,8 +33,7 @@ function App() {
   }
 
   const setPage = page => {
-    console.log(page);
-    setCurrentPage(page);
+    setCurrentPage(page); 
   }
 
   return (

@@ -1,43 +1,24 @@
 import { categories } from "../types/Organisations";
 import { useState } from "react";
-import {
-  TextField,
-} from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
+import { TextField } from "@mui/material";
 import MultiSelect from "./MultiSelect";
 
-const BuddyingFilterBar = () => {
-  const [categoryFilter, setCategoryFilter] = useState([]);
-  const [locationFilter, setLocationFilter] = useState([]);
-
-  const handleCategoryFilterChange = (e) => {
-    const {
-      target: { value },
-    } = e;
-
-    setCategoryFilter(typeof value === "string" ? value.split(",") : value);
-  };
-
-  const handleLocationFilterChange = (e) => {
-    const {
-      target: { value },
-    } = e;
-
-    setLocationFilter(typeof value === "string" ? value.split(",") : value);
-  };
-
+const BuddyingFilterBar = ({
+  handleCategoryFilterChange,
+  handleLocationFilterChange,
+  categoryFilter,
+  locationFilter,
+}) => {
   const locations = ["dummyData!"];
 
   return (
     <div>
-      <div>
-        <TextField
-          sx={{ m: 1, width: 500, maxWidth: "80vw" }}
-          id="outlined-search"
-          label="Search for organisation..."
-          type="search"
-        />
-      </div>
+      {/* <TextField
+        sx={{ m: 1, width: 500, maxWidth: "80vw" }}
+        id="outlined-search"
+        label="Search for organisation..."
+        type="search"
+      /> */}
 
       <MultiSelect
         label="Categories"
