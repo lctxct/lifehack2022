@@ -2,6 +2,9 @@ import { useEffect, useState} from 'react';
 import OrganisationBox from '../components/OrganisationBox'; 
 import { Grid } from '@mui/material';
 import defaultImg from '../test-data/image.jpg';
+import ResponsiveAppBar from '../components/NavBar';
+
+
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const DEFAULT_AUTH_TOKEN = process.env.REACT_APP_DEFAULT_AUTH_TOKEN;
@@ -26,7 +29,9 @@ const Home = () => {
     }, []);
     
     return (
+
         <>
+        <ResponsiveAppBar /> 
          <Grid container spacing={3} style={{padding: '2vw'}}>
             {organisationData.map(data => <OrganisationBox img={defaultImg} eventName={data.event_name} {...data} />)}
         </Grid>
