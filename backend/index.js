@@ -6,9 +6,27 @@ const Connection = require('./mongoDB.js')
 const authentication = require('./authentication.js')
 const NodeCache = require('node-cache');
 
+global.NodeCacheObj = new NodeCache({ checkperiod: 0, useClones: false })
+
 const main = async () => {
 
     if (await Connection.open()) {
+        NodeCacheObj.set("categoryMapping", [
+            "Animal Welfare",
+            "Arts & Heritage",
+            "Children & Youth",
+            "Community",
+            "Disability",
+            "Education",
+            "Elderly",
+            "Environment",
+            "Families",
+            "Health",
+            "Humanitarian",
+            "Social Service",
+            "Sports",
+            "Women & Girls",
+          ])
         // mongoSanitize hook
         fastify.addHook('preHandler', (request, reply, done) => {
             mongoSanitize.sanitize(request.body, {});

@@ -15,12 +15,6 @@ const register = async (req, res) => {
     const collections = Connection.collections
     const cleanedUsername = req.body.username.toLowerCase()
 
-    // clean categories
-    let cleanedCategories = []
-    for (let i = 0; i < req.body.categories.length; i++) {
-        cleanedCategories.push(req.body.categories[i].toLowerCase())
-    }
-
     await collections.users.insertOne({
         username: cleanedUsername,
         password: await argon2.hash(req.body.password),
