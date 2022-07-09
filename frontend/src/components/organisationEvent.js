@@ -25,7 +25,7 @@ const ExpandMore = styled((props) => {
   }),
 }));
 
-export default function EventCard(title, subheader, takeaways, desc, img) {
+export default function EventCard(props) {
   const [expanded, setExpanded] = React.useState(false);
 
   const handleExpandClick = () => {
@@ -36,13 +36,13 @@ export default function EventCard(title, subheader, takeaways, desc, img) {
     
     <Card sx={{ maxWidth: 345 }}>
       <CardHeader
-        title={title}
-        subheader={subheader}
+        title={props.title}
+        subheader={props.subheader}
       />
       <CardMedia
         component="img"
         height="194"
-        image={img}
+        image={props.img}
         alt="test"
       />
       <CardContent>
@@ -50,7 +50,7 @@ export default function EventCard(title, subheader, takeaways, desc, img) {
           What can you expect to learn?
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          {takeaways}
+          {props.takeaways}
         </Typography>
       </CardContent>
       <CardActions disableSpacing>
@@ -72,7 +72,7 @@ export default function EventCard(title, subheader, takeaways, desc, img) {
       <Collapse in={expanded} timeout="auto" unmountOnExit>
         <CardContent>
           <Typography paragraph>
-          {desc}
+          {props.desc}
           </Typography>
           
         </CardContent>

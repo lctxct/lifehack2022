@@ -3,7 +3,7 @@ import  EventCard from "../components/organisationEvent";
 import { Grid, TextField } from "@mui/material";
 import defaultImg from "../test-data/image.jpg";
 import Stack from '@mui/material/Stack';
-import orgProfile from  '../components/organisationProfile';
+import OrgProfile from  '../components/organisationProfile';
 
 
 export default function OrganisationPage() {
@@ -14,7 +14,7 @@ export default function OrganisationPage() {
   spacing={0}
 >
     <item>
-        <orgProfile/>
+        <OrgProfile/>
     </item>
 
 <item>

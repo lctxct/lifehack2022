@@ -10,7 +10,7 @@ import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import johnImg from "../test-data/john.jpeg";
 
-export default function orgProfile() {
+export default function OrgProfile() {
     const [value, setValue] = React.useState('1');
 
   const handleChange = (event, newValue) => {
