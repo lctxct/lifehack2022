@@ -35,6 +35,12 @@ function App() {
     setUsername(token.split(".")[0])
   }
 
+  const handleLogout = () => {
+    setUsername("")
+    setToken(false)
+    localStorage.removeItem("auth-token")
+  }
+
   const setPage = page => {
     setCurrentPage(page);
   }
@@ -48,7 +54,7 @@ function App() {
           {token ? (
             <Fade in={true}>
               <div>
-                <NavBar setPage={setPage} />
+                <NavBar setPage={setPage} handleLogout={handleLogout}/>
 
                 {currentPage === 0 && <Home />}
                 {currentPage === 1 && <Buddying />}
