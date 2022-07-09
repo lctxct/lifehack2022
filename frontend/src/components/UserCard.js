@@ -16,7 +16,7 @@ const UserCard = ({ username, age, bio, handleClick, ...props }) => {
       {props.categories.map((category) => (
         <Chip label={categories[category]} sx={{ m: 0.5 }} />
       ))}
-      <Button variant="contained" onClick={handleClick}>
+      <Button variant="contained" onClick={handleClick} style={{marginTop: "2ch"}}>
         View Profile
       </Button>
     </Paper>

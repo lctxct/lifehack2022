@@ -3,7 +3,7 @@ import OrganisationBox from "../components/OrganisationBox";
 import DeleteIcon from '@mui/icons-material/Delete';
 import SearchIcon from '@mui/icons-material/Search';
 
-import { Button, CircularProgress, Grid, TextField, Paper } from "@mui/material";
+import { Button, CircularProgress, Grid, TextField, Paper, Fade } from "@mui/material";
 import defaultImg from "../test-data/image.jpg";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
@@ -71,50 +71,52 @@ const Home = () => {
   }, []);
 
   return (
-    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column" }}>
-      <div style={{ margin: '2vw' }}>
-        <Paper elevation={20} style={{ padding: "5ch", borderRadius: "30px", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
-          <div style={{ fontWeight: "bold", fontSize: "1.5vw" }}>
-            Describe the type of volunteering opportunity you're looking for!
-          </div>
-
-          <form onSubmit={onSubmit} style={{display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column"}}>
-            <TextField
-              placeholder="E.g I love nature and would love to help with guiding others to learn more about Singapore's nature reserves."
-              multiline
-              rows={5}
-              fullWidth
-              value={query}
-              style={{ width: "40vw", margin: '2vw' }}
-              onChange={handleChange}
-            />
-            <div>
-              <Button variant="contained" type="submit" sx={{ fontFamily: 'inherit' }} endIcon={<SearchIcon />}>Get Recommendations</Button>
+    <Fade in={true}>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column" }}>
+        <div style={{ margin: '2vw' }}>
+          <Paper elevation={20} style={{ padding: "5ch", borderRadius: "30px", display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
+            <div style={{ fontWeight: "bold", fontSize: "1.5vw" }}>
+              Describe the type of volunteering opportunity you're looking for!
             </div>
-          </form>
 
-          {currentlyFiltered && (
+            <form onSubmit={onSubmit} style={{ display: "flex", justifyContent: "center", alignItems: "center", flexDirection: "column" }}>
+              <TextField
+                placeholder="E.g I love nature and would love to help with guiding others to learn more about Singapore's nature reserves."
+                multiline
+                rows={5}
+                fullWidth
+                value={query}
+                style={{ width: "40vw", margin: '2vw' }}
+                onChange={handleChange}
+              />
               <div>
-                <Button variant="contained" sx={{ fontFamily: 'inherit', marginTop: "3ch" }} color="error" endIcon={<DeleteIcon />} onClick={() => {handleClearFilter()}}>Clear Filter</Button>
+                <Button variant="contained" type="submit" sx={{ fontFamily: 'inherit' }} endIcon={<SearchIcon />}>Get Recommendations</Button>
+              </div>
+            </form>
+
+            {currentlyFiltered && (
+              <div>
+                <Button variant="contained" sx={{ fontFamily: 'inherit', marginTop: "3ch" }} color="error" endIcon={<DeleteIcon />} onClick={() => { handleClearFilter() }}>Clear Filter</Button>
               </div>
             )}
-        </Paper>
-      </div>
-      <div>
-        {isLoading && <CircularProgress />}
-        {!isLoading && <Grid container spacing={3} style={{ padding: "2vw" }}>
+          </Paper>
+        </div>
+        <div>
+          {isLoading && <CircularProgress />}
+          {!isLoading && <Grid container spacing={3} style={{ padding: "2vw" }}>
 
-          {organisationData.map((data) => (
-            <OrganisationBox
-              img={defaultImg}
-              eventName={data.event_name}
-              {...data}
-              sx={{ fontFamily: 'inherit' }}
-            />
-          ))}
-        </Grid>}
-      </div>
-    </div >
+            {organisationData.map((data) => (
+              <OrganisationBox
+                img={defaultImg}
+                eventName={data.event_name}
+                {...data}
+                sx={{ fontFamily: 'inherit' }}
+              />
+            ))}
+          </Grid>}
+        </div>
+      </div >
+    </Fade>
   );
 };
 
