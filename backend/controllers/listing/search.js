@@ -32,6 +32,7 @@ const search = async (req, res) => {
             finalData += data.toString()
         });
         pythonProcess.stdout.on("end", () => {
+            print(finalData)
             const corpusIDs = JSON.parse(finalData)
             let finalDocs = []
             for (let i = 0; i < corpusIDs.length; i++) {
