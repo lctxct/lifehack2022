@@ -1,6 +1,7 @@
 import react from "react";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
+import InfoIcon from '@mui/icons-material/Info';
 import { Button, Grid, Paper, Typography } from "@mui/material/";
 
 const OrganisationBox = ({
@@ -16,17 +17,17 @@ const OrganisationBox = ({
       <Paper>
         <img src={img} alt="organisation" style={{ maxWidth: "100%",  }} />
         <div style={{padding: '1vw'}}>
-          <Typography variant="h6">{eventName}</Typography>
-          <div>{organisation}</div>
-          <div>
+          <Typography variant="h5">{eventName}</Typography>
+          <div style={{textTransform: "capitalize", marginTop: "2ch", fontWeight: "bold"}}>{organisation}</div>
+          <div style={{marginTop: "0.5ch", display: "flex", alignItems: "center"}}>
             <CalendarMonthIcon />
             {timing}
           </div>
-          <div>
+          <div style={{marginTop: "0.5ch", textTransform: "capitalize", display: "flex", alignItems: "center"}}>
             <LocationOnIcon />
             {location_name}
           </div>
-          <Button variant="outlined">Find out more</Button>
+          <Button style={{marginTop: "2ch"}} variant="outlined" endIcon={<InfoIcon/>}>Find out more</Button>
         </div>
       </Paper>
     </Grid>
