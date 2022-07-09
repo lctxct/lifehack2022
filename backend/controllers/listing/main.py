@@ -1,16 +1,20 @@
 import sys, json
 from sentence_transformers import SentenceTransformer, util
 
-searchQuery = sys.argv[0]
-searchData = json.loads(sys.argv[1])
 
 model = SentenceTransformer('msmarco-distilbert-base-v4')
 
+searchQuery = sys.argv[1]
 query_embedding = model.encode(searchQuery)
-corpus = searchData
+print(sys.argv[2])
+print(type(sys.argv[2]))
+corpus = json.loads(sys.argv[2])
 
 corpus_embeddings = model.encode(corpus, convert_to_tensor=True)
 hits = util.semantic_search(query_embedding, corpus_embeddings, top_k=5)
 hits = hits[0]      #Get the hits for the first query
+hitIDs = []
 for hit in hits:
-  print(corpus[hit['corpus_id']], "(Score: {:.4f})".format(hit['score']))
+    hitIDs.append(hit['corpus_id'])
+
+print(json.dumps(hitIDs))
