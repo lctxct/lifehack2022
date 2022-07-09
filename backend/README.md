@@ -75,7 +75,7 @@ event_name: '',
 timing: '', 
 location: '', 
 description: 'hello world!', 
-training_program: '' 
+training_program: []
 } ] }
 ```
 
