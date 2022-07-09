@@ -59,7 +59,9 @@ function App() {
           ) :
             (
               <Fade in={true}>
-                <Login handleNewLogin={handleNewLogin} />
+                <div>
+                  <Login handleNewLogin={handleNewLogin} />
+                </div>
               </Fade>
             )}
         </Fragment>
