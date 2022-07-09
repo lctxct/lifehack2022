@@ -120,15 +120,24 @@ training_program (note, request the automatic training program generation endpoi
 
 
 
-### `POST /generate_training_program`  (TBC)
+### `POST /generate_training`
 
 ### Request:
-
-description  
-
-Response:  
-training_program  
-
+```
+description
+event_name
+```
+### Response:
+```
+{
+  "success": true,
+  "generatedTrainings": [
+    "oral skills practice",
+    "conversational language training",
+    "body language cues reading"
+  ]
+}
+```
 
 
 ## Buddying/Users
