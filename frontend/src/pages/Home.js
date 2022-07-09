@@ -16,7 +16,7 @@ const Home = () => {
   const [query, setQuery] = useState('');
   const [currentlyFiltered, setCurrentlyFiltered] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [ modal, setModal ] = useState(false); 
+  const [ modal, setModal ] = useState(true); 
 
   const handleChange = (event) => {
     setQuery(event.target.value);
@@ -113,9 +113,10 @@ const Home = () => {
           {!isLoading && <Grid container spacing={3} style={{ padding: "2vw" }}>
 
             {organisationData.map((data) => (
-              <OrganisationBox
+              <OrganisationCard
                 img={defaultImg}
                 eventName={data.event_name}
+                handleClick={handleClick}
                 {...data}
                 sx={{ fontFamily: 'inherit' }}
               />
