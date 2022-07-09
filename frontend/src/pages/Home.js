@@ -12,7 +12,7 @@ const SearchBar = () => {
       <TextField
         placeholder="Start typing..."
         multiline
-        rows={10}
+        rows={5}
         fullWidth
         style={{ width: "40vw", margin: '2vw' }}
       />
