@@ -3,10 +3,7 @@ import NavBar from "./components/NavBar";
 import Home from "./pages/Home";
 import Buddying from "./pages/Buddying";
 import FoundProfile from "./pages/FoundUserProfile";
-import CustomizedTimeline from "./components/pastVolunteerEvents";
-import BuddyProfile from "./components/BuddyProfile";
 import Login from "./pages/Login";
-import OrganisationPage from "./pages/organisationPage";
 import { CircularProgress, Fade } from "@mui/material";
 
 import NotFound from "./pages/NotFound";
@@ -36,12 +33,12 @@ function App() {
   };
 
   const handleLogout = () => {
-    setUsername("")
-    setToken(false)
-    localStorage.removeItem("auth-token")
-  }
+    setUsername("");
+    setToken(false);
+    localStorage.removeItem("auth-token");
+  };
 
-  const setPage = page => {
+  const setPage = (page) => {
     setCurrentPage(page);
   };
 
@@ -64,11 +61,11 @@ function App() {
           {token ? (
             <Fade in={true}>
               <div>
-                <NavBar setPage={setPage} handleLogout={handleLogout}/>
+                <NavBar setPage={setPage} handleLogout={handleLogout} />
 
                 {currentPage === 0 && <Home />}
                 {currentPage === 1 && <Buddying setPage={setPage} />}
-                {currentPage == 2 && <OrganisationPage />}
+                {currentPage == 2 && <FoundProfile />}
                 {currentPage > 2 && <NotFound />}
               </div>
             </Fade>
