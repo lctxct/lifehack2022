@@ -1,0 +1,26 @@
+{
+    "conversation": [
+        "conversational language training",
+        "oral skills practice"
+    ],
+    "arts": [
+        "origami skills",
+        "terrarium making skills",
+        "jewellery making skills",
+        "calligraphy skills",
+        "video editing"
+    ],
+    "healthcare": [
+        "basic emergency skills training",
+        "body language cues reading"
+    ],
+    "logistics": [
+        "basic excel",
+        "logistics planning training"
+    ],
+    "education": [
+        "research skills",
+        "story telling training",
+        "explanation skills"
+    ]
+}
