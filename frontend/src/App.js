@@ -3,6 +3,7 @@ import NavBar from "./components/NavBar";
 import Home from "./pages/Home";
 import Buddying from "./pages/Buddying";
 import FoundProfile from "./pages/FoundUserProfile";
+import NewVolunteerOpportunity from "./pages/NewVolunteerOpportunity";
 import Login from "./pages/Login";
 import { CircularProgress, Fade } from "@mui/material";
 import { useSnackbar } from 'notistack';
@@ -11,7 +12,7 @@ import NotFound from "./pages/NotFound";
 import { useState, useEffect, Fragment } from "react";
 
 function App() {
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(3);
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   const [token, setToken] = useState(false)
   const [loading, setLoading] = useState(true)
@@ -74,7 +75,8 @@ function App() {
                 {currentPage === 0 && <Home />}
                 {currentPage === 1 && <Buddying setPage={setPage} />}
                 {currentPage == 2 && <FoundProfile />}
-                {currentPage > 2 && <NotFound />}
+                {currentPage == 3 && <NewVolunteerOpportunity />}
+                {currentPage > 3 && <NotFound />}
               </div>
             </Fade>
           ) : (
