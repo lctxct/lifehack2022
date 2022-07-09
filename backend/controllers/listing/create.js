@@ -20,6 +20,11 @@ const create = async (req, res) => {
         await collections.organisations.insertOne({organisation: cleanedOrgName, category: cleanedCatName, description: cleanedOrgName + " is an organisation dealing with " + req.body.category})
     }
 
+    if (!Array.isArray(req.body.training_program)) return res.send({
+        success: false,
+        error: "training-needs-to-be-array"
+    })
+
     
     await collections.opportunities.insertOne({
         organisation: cleanedOrgName,
