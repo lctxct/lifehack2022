@@ -31,7 +31,8 @@ const search = async (req, res) => {
         pythonProcess.stdout.on('data', (data) => {
             finalData += data.toString()
         });
-        pythonProcess.stdout.on("end", () => {
+        pythonProcess.stdout.on("end", (data) => {
+            console.log(data)
             console.log(finalData)
             const corpusIDs = JSON.parse(finalData)
             let finalDocs = []
