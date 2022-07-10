@@ -1,4 +1,4 @@
-import { Button, TextField, InputAdornment, Checkbox, FormControlLabel, FormGroup } from '@mui/material'
+import { TextField, InputAdornment, Checkbox, FormControlLabel, FormGroup } from '@mui/material'
 import { LoadingButton } from '@mui/lab';
 import { Fragment, useState } from 'react';
 import { useSnackbar } from 'notistack';
@@ -97,8 +97,10 @@ const Login = (props) => {
                 <div style={{ width: '100%', marginTop: "4ch", marginBottom: "4ch", display: "flex", flexDirection: "column", alignItems: "center", backgroundColor: "rgba(0, 0, 0, 0.8)", padding: "4ch", border: "1px transparent solid", borderRadius: "25px", boxShadow: "7px 7px 6px 6px rgba(0, 0, 0, .5)" }}>
 
                     <Fragment>
+                        <h1 >Cold Brew</h1>
+                        <span>LinkedIn for Volunteering.</span>
+                        <h3 style={{ alignSelf: "flex-start", marginTop: "3ch" }}>Sign In</h3>
 
-                        <h1 style={{ alignSelf: "flex-start" }}>Sign In</h1>
                         <form
                             style={{ display: "flex", flexDirection: "column", width: "100%", justifyContent: "center" }}
                             onSubmit={async (e) => {
@@ -120,7 +122,7 @@ const Login = (props) => {
                                 InputProps={{
                                     startAdornment: (
                                         <InputAdornment position="start">
-                                            <AccountCircleOutlinedIcon style={{color: "#eeeeee"}} />
+                                            <AccountCircleOutlinedIcon style={{ color: "#eeeeee" }} />
                                         </InputAdornment>
                                     ),
                                 }}
@@ -138,7 +140,7 @@ const Login = (props) => {
                                 InputProps={{
                                     startAdornment: (
                                         <InputAdornment position="start">
-                                            <LockOutlinedIcon style={{color: "#eeeeee"}} />
+                                            <LockOutlinedIcon style={{ color: "#eeeeee" }} />
                                         </InputAdornment>
                                     ),
                                 }}

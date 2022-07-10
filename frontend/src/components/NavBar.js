@@ -17,34 +17,34 @@ import { styled, alpha } from '@mui/material/styles';
 
 
 const Search = styled('div')(({ theme }) => ({
-    position: 'relative',
-    borderRadius: theme.shape.borderRadius,
-    backgroundColor: alpha(theme.palette.common.white, 0.15),
-    '&:hover': {
-      backgroundColor: alpha(theme.palette.common.white, 0.25),
-    },
-    marginLeft: 0,
-    width: '100%',
-    [theme.breakpoints.up('sm')]: {
-      marginLeft: theme.spacing(1),
-      width: 'auto',
-    },
-  }));
-  
-  const SearchIconWrapper = styled('div')(({ theme }) => ({
-    padding: theme.spacing(0, 2),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-  }));
+  position: 'relative',
+  borderRadius: theme.shape.borderRadius,
+  backgroundColor: alpha(theme.palette.common.white, 0.15),
+  '&:hover': {
+    backgroundColor: alpha(theme.palette.common.white, 0.25),
+  },
+  marginLeft: 0,
+  width: '100%',
+  [theme.breakpoints.up('sm')]: {
+    marginLeft: theme.spacing(1),
+    width: 'auto',
+  },
+}));
+
+const SearchIconWrapper = styled('div')(({ theme }) => ({
+  padding: theme.spacing(0, 2),
+  height: '100%',
+  position: 'absolute',
+  pointerEvents: 'none',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+}));
 
 const pages = ['Volunteer Opportunities', 'Find a Buddy'];
 const settings = ['Profile', 'Settings', 'Logout'];
 
-const ResponsiveAppBar = ({ setPage }) => {
+const ResponsiveAppBar = ({ setPage, handleLogout }) => {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
 
@@ -62,6 +62,12 @@ const ResponsiveAppBar = ({ setPage }) => {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const handleMenuClick = (option) => {
+    if (option === "Logout") {
+      handleLogout()
+    }
+  }
 
   return (
     <AppBar position="static" sx={{ backgroundColor: "#98745C"}}>
@@ -83,7 +89,7 @@ const ResponsiveAppBar = ({ setPage }) => {
               textDecoration: 'none',
             }}
           >
-            
+
           </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
@@ -177,7 +183,7 @@ const ResponsiveAppBar = ({ setPage }) => {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                <MenuItem key={setting} onClick={() => { handleMenuClick(setting) }}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}

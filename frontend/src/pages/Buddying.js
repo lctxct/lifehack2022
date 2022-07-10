@@ -4,11 +4,12 @@ import Carousel from "react-spring-3d-carousel";
 import { config } from "react-spring";
 import { useEffect, useState } from "react";
 import { categories } from "../types/Organisations";
+import { Fade } from "@mui/material";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 const DEFAULT_AUTH_TOKEN = process.env.REACT_APP_DEFAULT_AUTH_TOKEN;
 
-const Buddying = () => {
+const Buddying = ({ setPage }) => {
   const [slides, setSlides] = useState([]); // key and content
   const [categoryFilter, setCategoryFilter] = useState([]);
   const [locationFilter, setLocationFilter] = useState([]);
@@ -41,35 +42,46 @@ const Buddying = () => {
       })
       .then((data) => {
         setSlides(
-          data.users.filter((user) => {
-            if (!categoryFilter.length) {
-              return true;
-            }
-            return user.categories.some(category => categoryFilter.includes(categories[category]))
-          }).map((user, index) => {
-            return { key: index, content: <UserCard {...user} /> };
-          })
+          data.users
+            .filter((user) => {
+              if (!categoryFilter.length) {
+                return true;
+              }
+              return user.categories.some((category) =>
+                categoryFilter.includes(categories[category])
+              );
+            })
+            .map((user, index) => {
+              return {
+                key: index,
+                content: <UserCard handleClick={() => setPage(2)} {...user} />,
+              };
+            })
         );
       });
   }, [categoryFilter, locationFilter]);
 
   return (
-    <>
-      <BuddyingFilterBar
-        handleCategoryFilterChange={handleCategoryFilterChange}
-        handleLocationFilterChange={handleLocationFilterChange}
-        categoryFilter={categoryFilter}
-        locationFilter={locationFilter}
-      />
-      <div style={{ width: "40%", height: "500px", margin: "1vw auto" }}>
-        <Carousel
-          slides={slides}
-          offsetRadius="10"
-          animationConfig={config.gentle}
-          showNavigation
+    <Fade in={true}>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column" }}>
+        <h1>Find a buddy! 🤗</h1>
+        <span style={{marginBottom: "2ch"}}>Volunteering alone is lonely and sad. Here are a list of volunteers <b>similiar to you</b> which you can volunteer together!</span>
+        <BuddyingFilterBar
+          handleCategoryFilterChange={handleCategoryFilterChange}
+          handleLocationFilterChange={handleLocationFilterChange}
+          categoryFilter={categoryFilter}
+          locationFilter={locationFilter}
         />
+        <div style={{ width: "40%", height: "500px", margin: "1vw auto", marginTop: "3ch" }}>
+          <Carousel
+            slides={slides}
+            offsetRadius="3"
+            animationConfig={config.gentle}
+            showNavigation
+          />
+        </div>
       </div>
-    </>
+    </Fade>
   );
 };
 

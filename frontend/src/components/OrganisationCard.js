@@ -3,13 +3,15 @@ import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import InfoIcon from '@mui/icons-material/Info';
 import { Button, Grid, Paper, Typography } from "@mui/material/";
+import { useState } from 'react'; 
 
-const OrganisationBox = ({
+const OrganisationCard = ({
   img,
   organisation,
   eventName,
   timing,
   location_name,
+  handleClick,
   ...props
 }) => {
   return (
@@ -27,11 +29,11 @@ const OrganisationBox = ({
             <LocationOnIcon />
             {location_name}
           </div>
-          <Button style={{marginTop: "2ch"}} variant="outlined" endIcon={<InfoIcon/>}>Find out more</Button>
+          <Button style={{marginTop: "2ch"}} variant="outlined" endIcon={<InfoIcon/>} onClick={handleClick}>Find out more</Button>
         </div>
       </Paper>
     </Grid>
   );
 };
 
-export default OrganisationBox;
+export default OrganisationCard;
