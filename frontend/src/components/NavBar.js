@@ -41,7 +41,7 @@ const SearchIconWrapper = styled('div')(({ theme }) => ({
   justifyContent: 'center',
 }));
 
-const pages = ['Volunteer Opportunities', 'Find a Buddy'];
+const pages = ['Volunteer Opportunities', 'Find a Buddy', 'Create', 'OrgPage'];
 const settings = ['Profile', 'Settings', 'Logout'];
 
 const ResponsiveAppBar = ({ setPage, handleLogout }) => {
@@ -151,7 +151,7 @@ const ResponsiveAppBar = ({ setPage, handleLogout }) => {
             {pages.map((page, index) => (
               <Button
                 key={page}
-                onClick={() => setPage(index)}
+                onClick={() => setPage(page)}
                 sx={{ my: 2, color: 'white', display: 'block', fontFamily: 'sans-serif', marginRight: '1rem'  }}
               >
                 {page}
