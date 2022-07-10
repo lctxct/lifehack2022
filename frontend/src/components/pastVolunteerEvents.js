@@ -6,17 +6,22 @@ import TimelineConnector from '@mui/lab/TimelineConnector';
 import TimelineContent from '@mui/lab/TimelineContent';
 import TimelineOppositeContent from '@mui/lab/TimelineOppositeContent';
 import TimelineDot from '@mui/lab/TimelineDot';
-import Rating from '@mui/material/Rating';
+import {Grid, Rating} from '@mui/material';
 import Typography from '@mui/material/Typography';
 
 export default function CustomizedTimeline() {
   return (
+   
     <Timeline>
-        <h2> My Volunteering Journey </h2>
-      <TimelineItem>
+       
+      <h2> My Volunteering Journey! </h2>
+
+      <TimelineItem >
+      
+
         <TimelineOppositeContent
           sx={{ m: 'auto 0' }}
-          align="right"
+          // align="right"
           variant="body2"
           color="text.secondary"
         >
@@ -38,11 +43,12 @@ export default function CustomizedTimeline() {
           <Rating name="read-only" value={3} readOnly />
         </TimelineContent>
       </TimelineItem>
-      <TimelineItem>
+      <TimelineItem position="left"> 
         <TimelineOppositeContent
           sx={{ m: 'auto 0' }}
           variant="body2"
           color="text.secondary"
+        
         >
           Jan, 2022
         </TimelineOppositeContent>
@@ -67,6 +73,7 @@ export default function CustomizedTimeline() {
           sx={{ m: 'auto 0' }}
           variant="body2"
           color="text.secondary"
+         
         >
           Nov, 2021
         </TimelineOppositeContent>
@@ -87,11 +94,13 @@ export default function CustomizedTimeline() {
         </TimelineContent>
       </TimelineItem>
 
-      <TimelineItem>
+      <TimelineItem position="left">
       <TimelineOppositeContent
           sx={{ m: 'auto 0' }}
           variant="body2"
           color="text.secondary"
+        
+        
         >
           June, 2021
         </TimelineOppositeContent>
@@ -136,7 +145,9 @@ export default function CustomizedTimeline() {
           <Rating name="read-only" value={4} readOnly />
         </TimelineContent>
       </TimelineItem>
-      
+     
     </Timeline>
+   
+ 
   );
 }
