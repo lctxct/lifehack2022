@@ -42,10 +42,8 @@ const OrganisationPage = () => {
         }).then(res => {
           return res.json()
         }).then(data => {
-          opps = data.filteredOpportunities.filter(r => r.organisation == "the organisation u want");
+          let opps = data.filteredOpportunities.filter(r => r.organisation == "the organisation u want");
           setOrganisationData(opps);
-        
-
           setCurrentlyFiltered(true)
           setIsLoading(false);
         });
