@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-
-import  OrganisationCardV2 from "../components/OrganisationEvent";
+import EventCard from "../components/organisationEvent";
 import { Grid, TextField } from "@mui/material";
 import defaultImg from "../test-data/image.jpg";
+<<<<<<< HEAD
 import Stack from '@mui/material/Stack';
 import OrgProfile from  '../components/OrganisationProfile';
 
@@ -45,63 +45,45 @@ const OrganisationPage = () => {
           data = data.filteredOpportunities.filter(r => r.organisation == "food from the heart");
           setOrganisationData(data);
         
+export default OrganisationPage
+// import Stack from "@mui/material/Stack";
+// import OrgProfile from "../components/organisationProfile";
+// >>>>>>> 1298c686334df75913bee667b58d93d77f5c0e6f
 
-          setCurrentlyFiltered(true)
-          setIsLoading(false);
-        });
-      }
-    }
+// export default function OrganisationPage() {
   
-    const getOrganisationData = async () => {
-      const response = await fetch(
-        BACKEND_URL + "/display_volunteer_opportunity",
-        {
-          method: "GET",
-          headers: {
-            authorization: DEFAULT_AUTH_TOKEN,
-          },
-        }
-      );
-  
-      const data = await response.json();
-      setOrganisationData(data.opportunities);
-      setIsLoading(false);
-    };
+//   return (
+//     <Stack direction="row" alignItems="stretch" spacing={0}>
+//       <item>
+//         <OrgProfile />
+//       </item>
 
-  
-    const handleClearFilter = () => {
-      setIsLoading(true);
-      setQuery("")
-      setCurrentlyFiltered(false)
-      getOrganisationData()
-    }
-  
-    useEffect(() => {
-      getOrganisationData();
-    }, []);
-  
-  return (
-    <Stack direction="row" alignItems="stretch" spacing={0}>
-      <item>
-        <OrgProfile />
-      </item>
+//       <item>
+//         <Grid container spacing={3} style={{ padding: "2vw" }}>
+//           <EventCard
+//             title="test1"
+//             subheader="test1"
+//             takeaways="test1"
+//             desc="test1"
+//             img={defaultImg}
+//           />
 
-      <item>
-         <Grid container spacing={3} style={{ padding: "2vw" }}>
-
-            {organisationData.map((data) => (
-              <OrganisationCardV2
-                img={defaultImg}
-                eventName={data.event_name}
-                // handleClick={handleClick}
-                {...data}
-                sx={{ fontFamily: 'inherit' }}
-              />
-            ))}
-        </Grid>
-      </item>
-    </Stack>
-  );
-}
-
-export default OrganisationPage 
+//           <EventCard
+//             title="test1"
+//             subheader="test1"
+//             takeaways="test1"
+//             desc="test1"
+//             img={defaultImg}
+//           />
+//           <EventCard
+//             title="test1"
+//             subheader="test1"
+//             takeaways="test1"
+//             desc="test1"
+//             img={defaultImg}
+//           />
+//         </Grid>
+//       </item>
+//     </Stack>
+//   );
+// }

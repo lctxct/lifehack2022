@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import Buddying from "./pages/Buddying";
 import FoundProfile from "./pages/FoundUserProfile";
 import NewVolunteerOpportunity from "./pages/NewVolunteerOpportunity";
-import OrganisationPage from "./pages/OrganisationPage";
+import OrganisationPage from "./pages/organisationPage";
 import Login from "./pages/Login";
 import { CircularProgress, Fade } from "@mui/material";
 import { useSnackbar } from 'notistack';
@@ -13,7 +13,7 @@ import NotFound from "./pages/NotFound";
 import { useState, useEffect, Fragment } from "react";
 
 function App() {
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState("Volunteer Opportunities");
   const { enqueueSnackbar, closeSnackbar } = useSnackbar();
   const [token, setToken] = useState(false)
   const [loading, setLoading] = useState(true)
@@ -73,11 +73,11 @@ function App() {
               <div>
                 <NavBar setPage={setPage} handleLogout={handleLogout} />
 
-                {currentPage === 0 && <Home />}
-                {currentPage === 1 && <Buddying setPage={setPage} />}
-                {currentPage == 2 && <FoundProfile />}
-                {currentPage == 3 && <NewVolunteerOpportunity />}
-                {currentPage == 4 && <OrganisationPage />}
+                {currentPage === "Volunteer Opportunities" && <Home />}
+                {currentPage === "Find a Buddy" && <Buddying setPage={setPage} />}
+                {currentPage == "Profile" && <FoundProfile />}
+                {currentPage == "Create" && <NewVolunteerOpportunity />}
+                {currentPage == "OrgPage" && <OrganisationPage />}
 
                 {currentPage > 4 && <NotFound />}
               </div>
