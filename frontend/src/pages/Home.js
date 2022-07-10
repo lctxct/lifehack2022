@@ -4,7 +4,7 @@ import OrganisationModal from "../components/OrganisationModal";
 import DeleteIcon from '@mui/icons-material/Delete';
 import SearchIcon from '@mui/icons-material/Search';
 
-import { Button, CircularProgress, Grid, TextField, Paper, Fade, createTheme } from "@mui/material";
+import { Button, CircularProgress, Grid, TextField, Paper, Fade, createTheme, ThemeProvider } from "@mui/material";
 import defaultImg from "../test-data/image.jpg";
 
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
@@ -12,8 +12,13 @@ const DEFAULT_AUTH_TOKEN = process.env.REACT_APP_DEFAULT_AUTH_TOKEN
 
 const customTheme = createTheme({
   palette: {
+    light: {
+      main: '#CDBCA5',
+      contrastText: '#FFFFFF'
+    },
     neutral: {
-      main: '#060606'
+      main: '#98745C',
+      contrastText: '#FFFFFF'
     },
   },
 });
@@ -85,6 +90,7 @@ const Home = () => {
   }, []);
 
   return (
+    <ThemeProvider theme={customTheme}>
     <Fade in={true}>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column" }}>
         <div style={{ margin: '2vw' }}>
@@ -105,7 +111,7 @@ const Home = () => {
                 onChange={handleChange}
               />
               <div>
-                <Button variant="contained" type="submit" sx={{ fontFamily: 'inherit' }} endIcon={<SearchIcon />}>Get Recommendations</Button>
+                <Button color="neutral" variant="contained" type="submit" sx={{ fontFamily: 'inherit' }} endIcon={<SearchIcon />}>Get Recommendations</Button>
               </div>
             </form>
 
@@ -117,7 +123,7 @@ const Home = () => {
           </Paper>
         </div>
         <div>
-          {isLoading && <CircularProgress />}
+          {isLoading && <CircularProgress color="light"/>}
           {!isLoading && <Grid container spacing={3} style={{ padding: "2vw" }}>
 
             {organisationData.map((data) => (
@@ -134,6 +140,7 @@ const Home = () => {
         <OrganisationModal open={modal} handleClose={handleClick} />
       </div >
     </Fade>
+    </ThemeProvider>
   );
 };
 
