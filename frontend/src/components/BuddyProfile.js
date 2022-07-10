@@ -8,7 +8,12 @@ import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
 import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
-import johnImg from "../test-data/john.jpeg";
+import johnImg from "../test-data/image.jpg";
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemIcon from '@mui/material/ListItemIcon';
+import ListItemText from '@mui/material/ListItemText';
+import FavoriteIcon from "@mui/icons-material/Favorite";
 
 export default function BuddyProfile() {
     const [value, setValue] = React.useState('1');
@@ -17,7 +22,7 @@ export default function BuddyProfile() {
     setValue(newValue);
   };
   return (
-    <Card sx={{ maxWidth: 445 }}>
+    <Card sx={{ maxwidth: 240}}>
       <CardActionArea>
         <CardMedia
           component="img"
@@ -40,12 +45,39 @@ export default function BuddyProfile() {
                 <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
                 <TabList onChange={handleChange} aria-label="lab API tabs example">
                     <Tab label="Interested Causes" value="1" />
-                    <Tab label="My Interests" value="2" />
+                    <Tab label="Why Do I Volunteer?" value="2" />
                     
                 </TabList>
                 </Box>
-                <TabPanel value="1">Animals, Elderly, Education</TabPanel>
-                <TabPanel value="2">I like potatoes.</TabPanel>
+                <TabPanel value="1"><List>
+                    <ListItem>
+                      <ListItemIcon>
+                        <FavoriteIcon/>
+                      </ListItemIcon>
+                      <ListItemText
+                        primary="Animals"
+                      />
+                    </ListItem>
+                    <ListItem>
+                      <ListItemIcon>
+                        <FavoriteIcon/>
+                      </ListItemIcon>
+                      <ListItemText
+                        primary="Elderly"
+                      />
+                    </ListItem>
+                    <ListItem>
+                      <ListItemIcon>
+                        <FavoriteIcon/>
+                      </ListItemIcon>
+                      <ListItemText
+                        primary="Education Access"
+                      />
+                    </ListItem>
+            </List></TabPanel>
+                <TabPanel value="2">
+I like meeting new people and giving back!
+                </TabPanel>
                
 
             </TabContext>
