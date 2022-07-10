@@ -1,6 +1,7 @@
 import { categories, locations } from "../types/Organisations";
 import MultiSelect from "../components/MultiSelect";
 import { useSnackbar } from 'notistack';
+import { Fade } from '@mui/material';
 import LoadingButton from '@mui/lab/LoadingButton';
 import {
   Button,
@@ -84,80 +85,82 @@ const NewVolunteerOpportunity = () => {
   };
 
   return (
-    <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column" }}>
-      <Typography variant="h3" style={{ marginTop: "3vh" }}>Create New Volunteering Opportunity</Typography>
+    <Fade in={true}>
+      <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column" }}>
+        <Typography variant="h3" style={{ marginTop: "3vh" }}>Create New Volunteering Opportunity</Typography>
 
-      <Paper elevation={20} style={{ padding: "5ch", marginTop: "2ch" }}>
-        <form onSubmit={getRecommendedCourses}>
-          <Grid container alignItems="center" justify="center" direction="column">
-            <Grid item>
-              <TextField
-                label="Event Title"
-                variant="standard"
-                value={eventName}
-                onChange={(event) => setEventName(event.target.value)}
-                sx={{ m: 1, width: 300 }}
-              />
-            </Grid>
-            <Grid item>
-              <MultiSelect
-                label="Categories"
-                items={categories}
-                itemFilter={categoryFilter}
-                handleChange={handleCategoryFilterChange}
-              />
-            </Grid>
-            <Grid item>
-              <MultiSelect
-                label="Locations"
-                items={locations}
-                itemFilter={locationFilter}
-                handleChange={handleLocationFilterChange}
-              />
-            </Grid>
-            <Grid item>
-              <TextField
-                label="Description"
-                value={description}
-                onChange={(event) => setDescription(event.target.value)}
-                multiline
-                rows={4}
-                defaultValue=""
-                variant="outlined"
-                sx={{ m: 1, width: 300 }}
-              />
-            </Grid>
+        <Paper elevation={20} style={{ padding: "5ch", marginTop: "2ch" }}>
+          <form onSubmit={getRecommendedCourses}>
+            <Grid container alignItems="center" justify="center" direction="column">
+              <Grid item>
+                <TextField
+                  label="Event Title"
+                  variant="standard"
+                  value={eventName}
+                  onChange={(event) => setEventName(event.target.value)}
+                  sx={{ m: 1, width: 300 }}
+                />
+              </Grid>
+              <Grid item>
+                <MultiSelect
+                  label="Categories"
+                  items={categories}
+                  itemFilter={categoryFilter}
+                  handleChange={handleCategoryFilterChange}
+                />
+              </Grid>
+              <Grid item>
+                <MultiSelect
+                  label="Locations"
+                  items={locations}
+                  itemFilter={locationFilter}
+                  handleChange={handleLocationFilterChange}
+                />
+              </Grid>
+              <Grid item>
+                <TextField
+                  label="Description"
+                  value={description}
+                  onChange={(event) => setDescription(event.target.value)}
+                  multiline
+                  rows={4}
+                  defaultValue=""
+                  variant="outlined"
+                  sx={{ m: 1, width: 300 }}
+                />
+              </Grid>
 
-            <div style={{marginTop: "2ch", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column"}}>
-              <LoadingButton loading={loadingTraining} variant="outlined" color="primary" type="submit">
-                Get suggested courses
-              </LoadingButton>
-              <div style={{marginTop: "2ch"}}>
-              <span >Volunteers are more likely to join if they know what's in it for them! Generate a list of training programs that fit your needs. </span>
+              <div style={{ marginTop: "2ch", display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column" }}>
+                <LoadingButton loading={loadingTraining} variant="outlined" color="primary" type="submit">
+                  Get suggested courses
+                </LoadingButton>
+                <div style={{ marginTop: "2ch" }}>
+                  <span >Volunteers are more likely to join if they know what's in it for them! Generate a list of training programs that fit your needs. </span>
+                </div>
               </div>
-            </div>
-          </Grid>
-        </form>
+            </Grid>
+          </form>
 
-        {hasRetrievedCourses && (
-          <div>
-            <h4>Suggested Courses:</h4>
-            <List>
-              {suggestedCourses.map((course) => {
-                return (
-                  <>
-                    <ListItem style={{ textTransform: "capitalize" }}>
-                      <ListItemText primary={course} />
-                    </ListItem>
-                    <Divider />
-                  </>
-                );
-              })}
-            </List>
-          </div>
-        )}
-      </Paper>
-    </div>
+          {hasRetrievedCourses && (
+            <div>
+              <h4>Suggested Courses:</h4>
+              <List>
+                {suggestedCourses.map((course) => {
+                  return (
+                    <>
+                      <ListItem style={{ textTransform: "capitalize" }}>
+                        <ListItemText primary={course} />
+                      </ListItem>
+                      <Divider />
+                    </>
+                  );
+                })}
+              </List>
+            </div>
+          )}
+        </Paper>
+      </div>
+    </Fade>
   );
 };
 
