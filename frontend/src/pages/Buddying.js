@@ -64,7 +64,7 @@ const Buddying = ({ setPage }) => {
             .map((user, index) => {
               return {
                 key: index,
-                content: <UserCard handleClick={() => setPage(2)} {...user} />,
+                content: <UserCard handleClick={() => setPage("Profile")} {...user} />,
               };
             })
         );
