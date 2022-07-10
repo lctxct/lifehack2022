@@ -7,19 +7,10 @@ import { useState } from 'react';
 
 const customTheme = createTheme({
   palette: {
-    light: {
-      main: '#CDBCA5',
-      contrastText: '#FFFFFF'
-    },
+    light: {main: '#CDBCA5', contrastText: '#FFFFFF'},
     mediumlight: {main: '#d4c4b4', contrastText: '#FFFFFF'},
-    neutral: {
-      main: '#98745C',
-      contrastText: '#FFFFFF'
-    },
-    dark: {
-      main: '#060606',
-      contrastText: '#FFFFFF'
-    },
+    neutral: {main: '#98745C', contrastText: '#FFFFFF'},
+    dark: {main: '#060606', contrastText: '#FFFFFF'},
   },
 });
 
