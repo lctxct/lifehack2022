@@ -1,5 +1,7 @@
 # Lifehack 2022 Backend API Docs
 
+Run `index.js` using `pm2`
+
 ## Authentication
 
 `POST /login `
@@ -21,8 +23,6 @@
     "token": "token"
 }
 ```
-
-
 
 `POST /register`  
 
@@ -48,8 +48,6 @@ Telegram_id
     "token": "token"
 }
 ```
-
-
 
 **Note:** All endpoints below these are **authenticated** and require an `Authorization` header with the token.
 
@@ -82,12 +80,15 @@ training_program: []
 ### `POST /search_volunteer_opportunity`
 
 Returns a list of opportunities similiar to the one above but filtered  
+
 ### Request:
 
 ```json
   "query": "I love nature!"
 ```
+
 ### Return:
+
 ```json
   { success: true, 
 filteredOpportunities: 
@@ -118,16 +119,17 @@ location
 training_program (note, request the automatic training program generation endpoint first)
 ```
 
-
-
 ### `POST /generate_training`
 
 ### Request:
+
 ```
 description
 event_name
 ```
+
 ### Response:
+
 ```
 {
   "success": true,
@@ -138,7 +140,6 @@ event_name
   ]
 }
 ```
-
 
 ## Buddying/Users
 
@@ -157,8 +158,6 @@ Returns **array of users** each with:
 }
 ```
 
-
-
 `POST /create_experience`  
 
 ### Request:
@@ -170,9 +169,6 @@ Returns **array of users** each with:
     "rating": 5
 }
 ```
-
-
-
 
 `POST /get_user`  
 
@@ -254,8 +250,6 @@ Returns a list of **recommended buddies** for the given user to find
 }
 ```
 
-
-
 ## Organisation Page
 
 ## `GET /list_organisations`
@@ -275,8 +269,6 @@ Returns a list of **recommended buddies** for the given user to find
   ]
 }
 ```
-
-
 
 `POST /query_organisations`  
 Sends back organisation info + experiences + volunteer opportunities tagged to organisation
@@ -330,5 +322,3 @@ Sends back organisation info + experiences + volunteer opportunities tagged to o
     "description": "We deal with nature"
 }
 ```
-
-
