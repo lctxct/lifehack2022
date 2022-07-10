@@ -87,8 +87,7 @@ const NewVolunteerOpportunity = () => {
   return (
     <Fade in={true}>
       <div style={{ display: "flex", alignItems: "center", justifyContent: "center", flexDirection: "column" }}>
-        <Typography variant="h3" style={{ marginTop: "3vh" }}>Create New Volunteering Opportunity</Typography>
-
+        <Typography variant="h4" style={{ marginTop: "3vh", fontFamily:"inherit" }}>Create New Volunteering Opportunity</Typography>
         <Paper elevation={20} style={{ padding: "5ch", marginTop: "2ch" }}>
           <form onSubmit={getRecommendedCourses}>
             <Grid container alignItems="center" justify="center" direction="column">

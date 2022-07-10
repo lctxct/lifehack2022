@@ -15,6 +15,17 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import CelebrationIcon from '@mui/icons-material/Celebration';
 import LocationSearchingIcon from '@mui/icons-material/LocationSearching';
+import { createTheme, ThemeProvider } from "@mui/material";
+
+const customTheme = createTheme({
+  palette: {
+    light: {main: '#CDBCA5', contrastText: '#FFFFFF'},
+    mediumlight: {main: '#ccbca4', contrastText: '#FFFFFF'},
+    neutral: {main: '#98745C', contrastText: '#FFFFFF'},
+    dark: {main: '#060606', contrastText: '#FFFFFF'},
+  },
+});
+
 
 export default function OrgProfile() {
     const [value, setValue] = React.useState('1');
@@ -23,6 +34,7 @@ export default function OrgProfile() {
     setValue(newValue);
   };
   return (
+    <ThemeProvider theme={customTheme}>
     <Card sx={{ maxWidth: 445, fontFamily: "inherit" }}>
       <CardActionArea sx={{fontFamily:"inherit"}}>
         <CardMedia
@@ -32,14 +44,14 @@ export default function OrgProfile() {
           alt="green john"
         />
         <CardContent sx={{fontFamily:"inherit"}}>
-        <Typography gutterBottom variant="h5" component="div" sx={{fontFamily:"inherit", fontSize:"1.1rem", fontWeight:"bold"}}>
+        <Typography gutterBottom variant="h5" component="div" sx={{fontFamily:"inherit", fontSize:"1.5rem", fontWeight:"bold"}}>
           Food From the Heart
 </Typography>
           <Typography gutterBottom variant="h6" component="div" sx={{fontFamily:"inherit", fontSize:"0.9rem", textAlign:"justify"}}>
           Food from the Heart is a non-profit organisation that feeds the needy through its food distribution programme. Our mission is to alleviate hunger by providing reliable, consistent and sustainable food support to the less-fortunate through food distribution programmes.
           </Typography>
 
-          <Box sx={{ width: '100%', typography: 'body1' }}>
+          <Box sx={{ width: '100%', typography: 'body1', marginBottom:"0rem" }}>
               
             <TabContext value={value}>
                 <Box sx={{ borderBottom: "0.5rem", borderColor: 'divider'}}>
@@ -48,7 +60,7 @@ export default function OrgProfile() {
                     <Tab label="Locations" value="2" />   
                 </TabList>
                 </Box>
-                <TabPanel value="1" sx={{ marginTop: "-0.6rem"}}>
+                <TabPanel value="1" sx={{ marginTop: "-1.1rem"}}>
                 <List>
                     <ListItem sx={{padding:"0.05rem", marginLeft:"1rem"}}>
                       <ListItemIcon>
@@ -59,7 +71,7 @@ export default function OrgProfile() {
                         primary="John J."
                       />
                     </ListItem>
-                    <ListItem sx={{padding:"0.05rem", marginLeft:"1rem"}}>
+                    <ListItem sx={{padding:"0.05rem", marginLeft:"1rem", marginTop:"-0.5rem"}}>
                       <ListItemIcon>
                         <CelebrationIcon/>
                       </ListItemIcon>
@@ -68,7 +80,7 @@ export default function OrgProfile() {
                         primary="William"
                       />
                     </ListItem>
-                    <ListItem sx={{padding:"0.05rem", marginLeft:"1rem"}}>
+                    <ListItem sx={{padding:"0.05rem", marginLeft:"1rem", marginTop:"-0.5rem"}}>
                       <ListItemIcon>
                         <CelebrationIcon/>
                       </ListItemIcon>
@@ -79,7 +91,7 @@ export default function OrgProfile() {
                     </ListItem>
             </List>
                 </TabPanel>
-                <TabPanel value="2" sx={{ marginTop: "-0.6rem"}}>
+                <TabPanel value="2" sx={{ marginTop: "-1.1rem"}}>
                   {/* how to get all the locations of a organisation name */}
                   <List>
               
@@ -92,7 +104,7 @@ export default function OrgProfile() {
                         primary="Bedok"
                       />
                     </ListItem>
-                    <ListItem sx={{padding:"0.05rem", marginLeft:"1rem"}}>
+                    <ListItem sx={{padding:"0.05rem", marginLeft:"1rem", marginTop:"-0.5rem"}}>
                       <ListItemIcon>
                         <LocationSearchingIcon/>
                       </ListItemIcon>
@@ -101,7 +113,7 @@ export default function OrgProfile() {
                         primary="Changi"
                       />
                     </ListItem>
-                    <ListItem sx={{padding:"0.05rem", marginLeft:"1rem"}}>
+                    <ListItem sx={{padding:"0.05rem", marginLeft:"1rem", marginTop:"-0.5rem"}}>
                       <ListItemIcon>
                         <LocationSearchingIcon/>
                       </ListItemIcon>
@@ -119,11 +131,12 @@ export default function OrgProfile() {
 
         </CardContent>
       </CardActionArea>
-      <Typography gutterBottom variant="h6" component="div">
-        <Button size="medium" color="primary" variant="contained">
+      <Typography gutterBottom variant="h6" component="div" sx={{fontFamily:"inherit"}}>
+        <Button size="small" color="primary" variant="contained" sx={{marginTop:"-5rem", fontFamily:"inherit", transform: "translateX(80%)"}}>
           Let's Chat!
         </Button>
       </Typography>
     </Card>
+    </ThemeProvider>
   );
 }

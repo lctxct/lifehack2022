@@ -1,6 +1,6 @@
 import * as React from 'react';
 import BuddyProfile from "../components/BuddyProfile";
-import CustomizedTimeline from "../components/pastVolunteerEvents";
+import CustomizedTimeline from "../components/PastVolunteerEvents";
 
 
 // import Drawer from '@mui/material/Drawer';
