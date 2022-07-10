@@ -4,7 +4,7 @@ import Home from "./pages/Home";
 import Buddying from "./pages/Buddying";
 import FoundProfile from "./pages/FoundUserProfile";
 import NewVolunteerOpportunity from "./pages/NewVolunteerOpportunity";
-import OrganisationPage from "./pages/OrganisationPage";
+import OrganisationPage from "./pages/organisationPage";
 import Login from "./pages/Login";
 import { CircularProgress, Fade } from "@mui/material";
 import { useSnackbar } from 'notistack';
