@@ -23,84 +23,90 @@ export default function OrgProfile() {
     setValue(newValue);
   };
   return (
-    <Card sx={{ maxWidth: 445 }}>
-      <CardActionArea>
+    <Card sx={{ maxWidth: 445, fontFamily: "inherit" }}>
+      <CardActionArea sx={{fontFamily:"inherit"}}>
         <CardMedia
           component="img"
-          height="340"
+          height="50%"
           image={Img}
           alt="green john"
         />
-        <CardContent>
-        <Typography gutterBottom variant="h5" component="div">
+        <CardContent sx={{fontFamily:"inherit"}}>
+        <Typography gutterBottom variant="h5" component="div" sx={{fontFamily:"inherit", fontSize:"1.1rem", fontWeight:"bold"}}>
           Food From the Heart
 </Typography>
-          <Typography gutterBottom variant="h6" component="div">
-          Food from the Heart is a non-profit organisation that feeds the needy through its food distribution programme. Our mission is to To alleviate hunger by providing reliable, consistent and sustainable food support to the less-fortunate through food distribution programmes.
+          <Typography gutterBottom variant="h6" component="div" sx={{fontFamily:"inherit", fontSize:"0.9rem", textAlign:"justify"}}>
+          Food from the Heart is a non-profit organisation that feeds the needy through its food distribution programme. Our mission is to alleviate hunger by providing reliable, consistent and sustainable food support to the less-fortunate through food distribution programmes.
           </Typography>
 
           <Box sx={{ width: '100%', typography: 'body1' }}>
               
             <TabContext value={value}>
-                <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                <Box sx={{ borderBottom: "0.5rem", borderColor: 'divider'}}>
                 <TabList onChange={handleChange} aria-label="lab API tabs example">
-                    <Tab label="Top Volunteers" value="1" />
+                    <Tab label="Top Volunteers" value="1" sx={{width:"50%"}}/>
                     <Tab label="Locations" value="2" />   
                 </TabList>
                 </Box>
-                <TabPanel value="1">
+                <TabPanel value="1" sx={{ marginTop: "-0.6rem"}}>
                 <List>
-                    <ListItem>
+                    <ListItem sx={{padding:"0.05rem", marginLeft:"1rem"}}>
                       <ListItemIcon>
                         <CelebrationIcon/>
                       </ListItemIcon>
                       <ListItemText
+                        sx={{marginLeft:"-1rem",fontSize:"0.5rem"}}
                         primary="John J."
                       />
                     </ListItem>
-                    <ListItem>
+                    <ListItem sx={{padding:"0.05rem", marginLeft:"1rem"}}>
                       <ListItemIcon>
                         <CelebrationIcon/>
                       </ListItemIcon>
                       <ListItemText
+                        sx={{marginLeft:"-1rem",fontSize:"0.5rem"}}
                         primary="William"
                       />
                     </ListItem>
-                    <ListItem>
+                    <ListItem sx={{padding:"0.05rem", marginLeft:"1rem"}}>
                       <ListItemIcon>
                         <CelebrationIcon/>
                       </ListItemIcon>
                       <ListItemText
+                        sx={{marginLeft:"-1rem",fontSize:"0.5rem"}}
                         primary="Joanne"
                       />
                     </ListItem>
             </List>
                 </TabPanel>
-                <TabPanel value="2">
+                <TabPanel value="2" sx={{ marginTop: "-0.6rem"}}>
                   {/* how to get all the locations of a organisation name */}
                   <List>
               
-                    <ListItem>
+                    <ListItem sx={{padding:"0.05rem", marginLeft:"1rem"}}>
                       <ListItemIcon>
                         <LocationSearchingIcon/>
                       </ListItemIcon>
                       <ListItemText
+                        sx={{marginLeft:"-1rem",fontSize:"0.5rem"}}
                         primary="Bedok"
                       />
                     </ListItem>
-                    <ListItem>
+                    <ListItem sx={{padding:"0.05rem", marginLeft:"1rem"}}>
                       <ListItemIcon>
                         <LocationSearchingIcon/>
                       </ListItemIcon>
                       <ListItemText
+                        sx={{marginLeft:"-1rem",fontSize:"0.5rem"}}
                         primary="Changi"
                       />
                     </ListItem>
-                    <ListItem>
+                    <ListItem sx={{padding:"0.05rem", marginLeft:"1rem"}}>
                       <ListItemIcon>
                         <LocationSearchingIcon/>
                       </ListItemIcon>
                       <ListItemText
+                        sx={{marginLeft:"-1rem",fontSize:"0.5rem"}}
                         primary="Jupiter"
                       />
                     </ListItem>

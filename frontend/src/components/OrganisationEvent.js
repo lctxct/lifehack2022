@@ -98,7 +98,7 @@ const OrganisationCardV2 = ({
       <Paper>
         <img src={img} alt="organisation" style={{ maxWidth: "100%",  }} />
         <div style={{padding: '1vw'}}>
-          <Typography variant="h5">{eventName}</Typography>
+          <Typography variant="h5" sx={{fontFamily:"inherit"}}>{eventName}</Typography>
           <div style={{textTransform: "capitalize", marginTop: "2ch", fontWeight: "bold"}}>{organisation}</div>
           <div style={{marginTop: "0.5ch", display: "flex", alignItems: "center"}}>
             <CalendarMonthIcon />
@@ -108,15 +108,17 @@ const OrganisationCardV2 = ({
             <LocationOnIcon />
             {location_name}
           </div>
-          <div style={{marginTop: "0.5ch", textTransform: "capitalize", display: "flex", alignItems: "center"}}>
-            <Typography variant="body2" color="text.secondary">
+          <div style={{marginTop: "1ch", textTransform: "capitalize", display: "flex", alignItems: "center"}}>
+            <Typography variant="body2" color="text.secondary" sx={{fontStyle:"italic"}}>
               What can you expect to learn?
             </Typography>
+          </div>
+          <div style={{marginTop: "0.3ch", textTransform: "capitalize", display: "flex", alignItems: "center"}}>
             <Typography variant="body2" color="text.secondary">
               {training_program}
             </Typography>
           </div>
-          <div style={{marginTop: "0.5ch", textTransform: "capitalize", display: "flex", alignItems: "center"}}>
+          <div style={{marginTop: "1.0ch", textTransform: "capitalize", display: "flex", alignItems: "center"}}>
           <IconButton aria-label="add to favorites">
             <FavoriteIcon />
           </IconButton>
